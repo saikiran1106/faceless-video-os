@@ -1,0 +1,16 @@
+{
+  "format": "short",
+  "description": "YouTube Shorts / Instagram Reels / TikTok, vertical 9:16",
+  "aspect": "9:16",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration_s": {"min": 20, "target": 55, "max": 120},
+  "words_per_minute": {"en": 160, "hi": 140, "te": 110, "ta": 110, "es": 165, "default": 150},
+  "hook_max_s": 3.0,
+  "beats": {"min_s": 1.6, "target_s": 3.0, "max_s": 5.0, "max_hold_s": 6.0},
+  "captions": {"enabled": true, "max_words_per_page": 3, "max_chars_per_page": 22, "position": "center", "y_percent": 62, "font_size": 78},
+  "platforms": ["youtube_shorts", "instagram"],
+  "end_card": true,
+  "chapters": false
+}

@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "visual-bible",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "aspect": {
+      "enum": [
+        "9:16",
+        "16:9",
+        "1:1"
+      ]
+    },
+    "style_contract": {
+      "type": "string",
+      "minLength": 1
+    },
+    "negative_contract": {
+      "type": "string"
+    },
+    "palette": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "characters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "character_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "prompt_contract": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reference_paths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sheet_prompt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "character_id",
+          "name",
+          "prompt_contract"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "location_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "prompt_contract": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reference_paths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sheet_prompt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "location_id",
+          "name",
+          "prompt_contract"
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "required": [
+    "aspect",
+    "style_contract",
+    "characters",
+    "locations"
+  ],
+  "additionalProperties": true
+}

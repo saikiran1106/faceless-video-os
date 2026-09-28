@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "topic": "Titanic's sister ship",
+  "title": "The Titanic Had a Twin",
+  "format": "short",
+  "language": "en",
+  "promise": {
+    "question": "Why did the twin survive?",
+    "payoff": "She was rebuilt with a double hull"
+  },
+  "target_duration_s": 30,
+  "voice_mode": "tts"
+}

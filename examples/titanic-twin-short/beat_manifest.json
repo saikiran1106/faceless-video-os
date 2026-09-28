@@ -1,0 +1,107 @@
+{
+  "version": "1.0",
+  "audio_duration_s": 25.007,
+  "directed": true,
+  "beats": [
+    {
+      "beat_id": "B001",
+      "keyframe_id": "KF001",
+      "start_s": 0.0,
+      "end_s": 5.983,
+      "text": "In nineteen twelve, the Titanic sank on her first voyage. But she was not alone.",
+      "visual_objective": "Illustrate: In nineteen twelve, the Titanic sank on her first voyage. But she was not alone.",
+      "shot_scale": "wide",
+      "camera": {
+        "kind": "push_in",
+        "intensity": 0.6
+      },
+      "character_ids": [],
+      "location_id": "ocean",
+      "transition": "crossfade",
+      "overlay": {
+        "text": "1912",
+        "style": "label"
+      }
+    },
+    {
+      "beat_id": "B002",
+      "keyframe_id": "KF002",
+      "start_s": 5.983,
+      "end_s": 10.535,
+      "text": "Her twin sister, the Olympic, sailed for twenty four more years.",
+      "visual_objective": "Illustrate: Her twin sister, the Olympic, sailed for twenty four more years.",
+      "shot_scale": "medium",
+      "camera": {
+        "kind": "pan_left",
+        "intensity": 0.6
+      },
+      "character_ids": [],
+      "location_id": "ocean",
+      "transition": "crossfade"
+    },
+    {
+      "beat_id": "B003",
+      "keyframe_id": "KF003",
+      "start_s": 10.535,
+      "end_s": 13.628,
+      "text": "Why did one ship die, and the other survive?",
+      "visual_objective": "Illustrate: Why did one ship die, and the other survive?",
+      "shot_scale": "close",
+      "camera": {
+        "kind": "pull_out",
+        "intensity": 0.6
+      },
+      "character_ids": [],
+      "location_id": "ocean",
+      "transition": "crossfade"
+    },
+    {
+      "beat_id": "B004",
+      "keyframe_id": "KF004",
+      "start_s": 13.628,
+      "end_s": 17.723,
+      "text": "After the disaster, the Olympic was rebuilt with a second hull.",
+      "visual_objective": "Illustrate: After the disaster, the Olympic was rebuilt with a second hull.",
+      "shot_scale": "extreme_wide",
+      "camera": {
+        "kind": "drift",
+        "intensity": 0.6
+      },
+      "character_ids": [],
+      "location_id": "ocean",
+      "transition": "crossfade"
+    },
+    {
+      "beat_id": "B005",
+      "keyframe_id": "KF005",
+      "start_s": 17.723,
+      "end_s": 21.906,
+      "text": "That hidden wall of steel is why she earned the name Old Reliable.",
+      "visual_objective": "Illustrate: That hidden wall of steel is why she earned the name Old Reliable.",
+      "shot_scale": "insert",
+      "camera": {
+        "kind": "pan_right",
+        "intensity": 0.6
+      },
+      "character_ids": [],
+      "location_id": "ocean",
+      "transition": "crossfade"
+    },
+    {
+      "beat_id": "B006",
+      "keyframe_id": "KF006",
+      "start_s": 21.906,
+      "end_s": 25.007,
+      "text": "Would you have sailed on her? Tell me in the comments.",
+      "visual_objective": "Illustrate: Would you have sailed on her? Tell me in the comments.",
+      "shot_scale": "medium",
+      "camera": {
+        "kind": "push_in",
+        "intensity": 0.6
+      },
+      "character_ids": [],
+      "location_id": "ocean",
+      "transition": "crossfade"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "channel_name": "My Channel",
+  "language": "en",
+  "niche": "history mysteries",
+  "voice": {
+    "provider": "auto",
+    "elevenlabs_voice_id": "",
+    "elevenlabs_model": "eleven_multilingual_v2",
+    "openai_voice": "onyx",
+    "openai_model": "gpt-4o-mini-tts",
+    "style_instructions": "Calm, confident documentary narrator. Slight suspense on questions."
+  },
+  "style": {
+    "caption_font": "Noto Sans",
+    "font_file": "",
+    "caption_color": "#FFFFFF",
+    "highlight_color": "#FFD400",
+    "accent_color": "#E53935",
+    "caption_case": "as_spoken"
+  },
+  "cta": {
+    "subscribe_text": "Subscribe for more stories like this",
+    "follow_text": "Follow for more stories like this",
+    "comment_text": "What would you have done? Comment below",
+    "end_card_seconds": 3.0
+  },
+  "music": {
+    "default_track": "",
+    "volume": 0.12
+  },
+  "packaging": {
+    "default_hashtags": ["#history", "#mystery"],
+    "default_tags": ["history", "mystery", "documentary"]
+  }
+}

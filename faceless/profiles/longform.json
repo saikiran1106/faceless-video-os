@@ -1,0 +1,16 @@
+{
+  "format": "longform",
+  "description": "Standard YouTube video, horizontal 16:9",
+  "aspect": "16:9",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "duration_s": {"min": 180, "target": 480, "max": 1800},
+  "words_per_minute": {"en": 150, "hi": 130, "te": 105, "ta": 105, "es": 155, "default": 140},
+  "hook_max_s": 15.0,
+  "beats": {"min_s": 2.5, "target_s": 5.0, "max_s": 8.0, "max_hold_s": 10.0},
+  "captions": {"enabled": true, "max_words_per_page": 6, "max_chars_per_page": 42, "position": "bottom", "y_percent": 86, "font_size": 54},
+  "platforms": ["youtube"],
+  "end_card": true,
+  "chapters": true
+}

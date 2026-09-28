@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "voice",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "tts",
+        "upload"
+      ]
+    },
+    "provider": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model": {
+      "type": "string"
+    },
+    "voice_id": {
+      "type": "string"
+    },
+    "master_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "master_sha256": {
+      "type": "string"
+    },
+    "duration_s": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "sample_rate": {
+      "type": "integer"
+    },
+    "loudness_lufs": {
+      "type": "number"
+    },
+    "original_path": {
+      "type": "string"
+    },
+    "chunks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "chunk_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "text": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "duration_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "chars": {
+            "type": "integer"
+          },
+          "takes": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "chunk_id",
+          "path",
+          "duration_s"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "cost_usd": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "mode",
+    "provider",
+    "master_path",
+    "duration_s"
+  ],
+  "additionalProperties": true
+}

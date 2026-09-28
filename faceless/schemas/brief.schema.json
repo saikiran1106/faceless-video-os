@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "brief",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "topic": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "format": {
+      "enum": [
+        "short",
+        "longform"
+      ]
+    },
+    "language": {
+      "type": "string",
+      "minLength": 1
+    },
+    "audience": {
+      "type": "string"
+    },
+    "angle": {
+      "type": "string"
+    },
+    "promise": {
+      "type": "object",
+      "properties": {
+        "question": {
+          "type": "string"
+        },
+        "payoff": {
+          "type": "string"
+        }
+      },
+      "required": [],
+      "additionalProperties": true
+    },
+    "target_duration_s": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "voice_mode": {
+      "enum": [
+        "tts",
+        "upload"
+      ]
+    },
+    "series": {
+      "type": "string"
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "topic",
+    "title",
+    "format",
+    "language",
+    "target_duration_s",
+    "voice_mode"
+  ],
+  "additionalProperties": true
+}

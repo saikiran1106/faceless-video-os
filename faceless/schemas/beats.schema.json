@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "beats",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "audio_duration_s": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "directed": {
+      "type": "boolean"
+    },
+    "beats": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "beat_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "keyframe_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "start_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "end_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "section_id": {
+            "type": "string"
+          },
+          "visual_objective": {
+            "type": "string"
+          },
+          "shot_scale": {
+            "enum": [
+              "",
+              "extreme_wide",
+              "wide",
+              "medium",
+              "close",
+              "extreme_close",
+              "insert",
+              "overhead"
+            ]
+          },
+          "camera": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "enum": [
+                  "push_in",
+                  "pull_out",
+                  "pan_left",
+                  "pan_right",
+                  "pan_up",
+                  "pan_down",
+                  "drift",
+                  "static"
+                ]
+              },
+              "intensity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "required": [
+              "kind"
+            ],
+            "additionalProperties": true
+          },
+          "character_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "location_id": {
+            "type": "string"
+          },
+          "mood": {
+            "type": "string"
+          },
+          "overlay": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "style": {
+                "enum": [
+                  "title",
+                  "stat",
+                  "lower_third",
+                  "quote",
+                  "label"
+                ]
+              },
+              "start_s": {
+                "type": "number",
+                "minimum": 0
+              },
+              "end_s": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "text",
+              "style"
+            ],
+            "additionalProperties": true
+          },
+          "long_hold_reason": {
+            "type": "string"
+          },
+          "transition": {
+            "enum": [
+              "crossfade",
+              "cut",
+              "dip_to_black",
+              "flash"
+            ]
+          }
+        },
+        "required": [
+          "beat_id",
+          "keyframe_id",
+          "start_s",
+          "end_s",
+          "text"
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "required": [
+    "audio_duration_s",
+    "beats"
+  ],
+  "additionalProperties": true
+}

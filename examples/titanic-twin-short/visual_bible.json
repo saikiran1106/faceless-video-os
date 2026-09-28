@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "aspect": "9:16",
+  "style_contract": "Cinematic painterly realism, early 1910s period accuracy, cold moonlit blues against warm lamp amber, soft film grain, 35mm lens, shallow depth of field",
+  "negative_contract": "text, captions, watermark, modern ships or clothing, cartoon style, extra fingers, distorted faces",
+  "characters": [
+    {
+      "character_id": "stoker",
+      "name": "Ship's stoker",
+      "prompt_contract": "wiry man in his 30s, soot-streaked face, rolled-up grey collarless shirt, braces, flat cap, tired determined eyes"
+    }
+  ],
+  "locations": [
+    {
+      "location_id": "atlantic",
+      "name": "North Atlantic at night",
+      "prompt_contract": "black glassy ocean, star-filled sky, distant icebergs glowing faintly under the moon"
+    },
+    {
+      "location_id": "shipyard",
+      "name": "Harland & Wolff shipyard, Belfast",
+      "prompt_contract": "towering steel gantry over a four-funnel liner in dry dock, riveters on scaffolds, overcast Belfast sky"
+    }
+  ]
+}

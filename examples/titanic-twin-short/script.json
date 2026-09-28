@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "language": "en",
+  "title": "The Titanic Had a Twin",
+  "source": "written",
+  "narration": "In 1912, the Titanic sank on her maiden voyage. But she was not alone. Her twin sister, the Olympic, sailed for twenty four more years. Why did one ship die, and the other survive? After the disaster, the Olympic went back to the shipyard and was rebuilt with a second, inner hull. That hidden wall of steel is why sailors called her Old Reliable. Would you have sailed on her? Tell me in the comments.",
+  "hook": {
+    "text": "In 1912, the Titanic sank on her maiden voyage. But she was not alone.",
+    "seconds": 4
+  },
+  "promise": {
+    "question": "Why did the Titanic's twin survive?",
+    "payoff": "She was rebuilt with a double hull after the disaster"
+  },
+  "sections": [
+    {
+      "section_id": "S01",
+      "title": "The twin nobody remembers",
+      "text": "In 1912, the Titanic sank on her maiden voyage. But she was not alone. Her twin sister, the Olympic, sailed for twenty four more years. Why did one ship die, and the other survive? After the disaster, the Olympic went back to the shipyard and was rebuilt with a second, inner hull. That hidden wall of steel is why sailors called her Old Reliable. Would you have sailed on her? Tell me in the comments."
+    }
+  ],
+  "claims": [
+    {
+      "text": "Olympic served until 1935",
+      "source_refs": [
+        "https://en.wikipedia.org/wiki/RMS_Olympic"
+      ]
+    },
+    {
+      "text": "Olympic was refitted with a double hull in 1912-13",
+      "source_refs": [
+        "https://en.wikipedia.org/wiki/RMS_Olympic"
+      ]
+    }
+  ],
+  "cta": {
+    "end": "Would you have sailed on her? Tell me in the comments."
+  },
+  "pronunciation": {}
+}
