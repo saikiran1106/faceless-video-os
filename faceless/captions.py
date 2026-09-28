@@ -23,8 +23,9 @@ def normalize(token: str) -> str:
 def align_script_words(script_text: str, words: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Give every script word a start/end taken from the transcript.
 
-    Matched runs copy timings 1:1. Replaced or inserted runs are spread evenly across
-    the time span the transcript used for that stretch, so nothing is left untimed.
+    Matched runs copy timings 1:1. Script words the ASR heard differently (replace) or
+    not at all (delete) are spread evenly across that stretch, so every script word is
+    shown. Words heard but absent from the script (insert) are ignored: the script wins.
     """
     script_tokens = script_text.split()
     if not script_tokens or not words:
@@ -38,13 +39,13 @@ def align_script_words(script_text: str, words: list[dict[str, Any]]) -> list[di
             for k in range(i2 - i1):
                 w = words[j1 + k]
                 out[i1 + k] = {"text": script_tokens[i1 + k], "start": w["start"], "end": w["end"]}
-        elif tag in ("replace", "insert") and i2 > i1:
+        elif tag in ("replace", "delete"):  # script words with no exact heard match
             if j2 > j1:
                 start, end = words[j1]["start"], words[j2 - 1]["end"]
-            else:  # pure insertion: squeeze between neighbours
+            else:  # heard nothing for them: squeeze between the neighbouring words
                 start = words[j1 - 1]["end"] if j1 > 0 else 0.0
                 end = words[j1]["start"] if j1 < len(words) else start + 0.3 * (i2 - i1)
-            span = max(end - start, 0.05 * (i2 - i1))
+            span = max(end - start, 0.0)  # never spill into the next heard word
             step = span / (i2 - i1)
             for k in range(i2 - i1):
                 out[i1 + k] = {"text": script_tokens[i1 + k], "start": start + k * step, "end": start + (k + 1) * step}
@@ -96,11 +97,27 @@ def to_srt(pages: list[dict[str, Any]]) -> str:
     return "\n".join(blocks)
 
 
+def match_ratio(script_text: str, words: list[dict[str, Any]]) -> float:
+    """Share of script words that were heard, in order (0-1)."""
+    a = [t for t in (normalize(x) for x in script_text.split()) if t]
+    b = [t for t in (normalize(w["text"]) for w in words) if t]
+    matcher = difflib.SequenceMatcher(a=a, b=b, autojunk=False)
+    return sum(block.size for block in matcher.get_matching_blocks()) / max(len(a), 1)
+
+
 def caption_words(transcript: dict[str, Any], script: dict[str, Any] | None) -> list[dict[str, Any]]:
-    """Script-spelled words when a script exists and it matches the audio well enough."""
+    """Script-spelled words when a script exists and it matches the audio well enough.
+
+    - AI voice (`source: written`): the script is what was sent to the voice.
+    - Uploaded voice (`source: transcript`): the narration starts as the transcript and
+      the agent (or `--script-file`) may correct spellings of names; those corrections
+      reach the captions as long as the words still match the recording.
+    """
     words = transcript["words"]
     if script and script.get("source") == "written":
         ratio = (transcript.get("script_match") or {}).get("ratio", 0)
         if ratio >= 0.6:
             return align_script_words(script["narration"], words)
+    elif script and script.get("source") == "transcript" and match_ratio(script["narration"], words) >= 0.7:
+        return align_script_words(script["narration"], words)
     return [dict(w) for w in words]

@@ -132,6 +132,7 @@ def build_parser() -> argparse.ArgumentParser:
     c = sc.add_parser("from-transcript", help="draft script.json from uploaded narration")
     c.add_argument("project")
     c.add_argument("--force", action="store_true")
+    c.add_argument("--script-file", type=Path, help="your written script for this recording: its spelling is used for captions")
 
     b = sub.add_parser("beats", help="beat timeline").add_subparsers(dest="beats_cmd", required=True)
     c = b.add_parser("build", help="measure beats from word timings")
@@ -309,7 +310,7 @@ def dispatch(args) -> int:  # noqa: C901 - a flat command table reads best here
     elif cmd == "script":
         from .transcript import script_from_transcript
 
-        _print(script_from_transcript(engine, args.force))
+        _print(script_from_transcript(engine, args.force, args.script_file))
     elif cmd == "beats":
         _print(_build_beats(engine, args.force, args.keep_directions))
     elif cmd == "images":

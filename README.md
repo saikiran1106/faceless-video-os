@@ -30,7 +30,120 @@ Then open the folder in **Claude Code** or **Codex** and say:
 
 > Make a 60-second Short about why the Titanic's sister ship survived.
 
-> Here's my voiceover: ~/Desktop/episode3.m4a. Turn it into a long-form video.
+> Here's my voiceover: ~/Desktop/episode3.m4a. Transcribe it with local Whisper and turn it into a long-form video.
+
+More ready-made prompts: [Prompting guide](#prompting-guide--how-to-ask-for-a-video) below.
+
+## Prompting guide — how to ask for a video
+
+You don't run the commands yourself; you tell your agent what you want. Whatever you **name** (voice, transcriber, image source, budget…) is binding; whatever you leave out is chosen for you and announced before any money is spent. The agent stops for you only at **CP1** (approve the story), **CP2** (approve the final cut), and before each paid call.
+
+### The master prompt
+
+Copy it, fill in what matters to you, delete the rest:
+
+```text
+Make a [Short (9:16) | long-form (16:9)] video.
+
+SOURCE      Topic: <what it's about>                       ← AI writes + voices it
+            — or — My narration: <path/to/audio>             ← I recorded it
+                     My script (what I read): <path>          ← optional: exact caption spelling
+VOICE       [AI: ElevenLabs voice <id> | AI: OpenAI voice <name> | use my recording]
+TRANSCRIBE  [local Whisper (free) | ElevenLabs Scribe | OpenAI Whisper | auto]
+LANGUAGE    <en | hi | te | es …>          LENGTH  <~55 seconds | ~8 minutes>
+AUDIENCE    <who>, TONE <e.g. suspenseful documentary>
+IMAGES      [my ChatGPT in the browser | your built-in image tool (Codex) | OpenAI Images API | give me prompts]
+STYLE       <visual style>; recurring characters: <names + looks>
+BUDGET      $<N> for paid calls — show min and worst-case cost and ask before each paid step.
+DELIVER     YouTube render [+ Instagram + TikTok] and a publishing package [using vidIQ].
+```
+
+### Case 1 — You upload your own audio
+
+**1a. Your voice + local Whisper (free, offline, no keys)**
+```text
+Here's my voiceover: ~/Desktop/titanic_twin.m4a
+Make a vertical Short from it. Transcribe it with local Whisper (free, offline) — no paid APIs.
+Use my ChatGPT in the browser for the images, cinematic painterly 1910s style.
+Deliver YouTube Shorts and Instagram renders plus the posting package.
+```
+
+**1b. Your voice + ElevenLabs Scribe (most accurate, 90+ languages)**
+```text
+My narration is ./audio/ep07_telugu.wav — it's in Telugu. Make a long-form 16:9 video.
+Transcribe with ElevenLabs Scribe, budget $1. Images: your built-in image generation (Codex).
+Captions font: fonts/NotoSansTelugu-Bold.ttf. Package it for YouTube with chapters.
+```
+
+**1c. Your voice + OpenAI Whisper**
+```text
+Turn ~/Podcasts/clip.mp3 into a 9:16 Short. Transcribe with OpenAI Whisper.
+Use the OpenAI Images API for keyframes. Budget $4 total, ask before generating.
+```
+
+**1d. Your voice + the script you read from (your spelling on screen)**
+```text
+Voiceover: ~/rec/olympic.wav. The script I read is ~/rec/olympic_script.txt — use its spelling
+for the captions. Transcribe locally. Make a Short. Images via my ChatGPT.
+```
+
+**1e. No keys at all, any image tool**
+```text
+I have no API keys. My recording is ./ep1.mp3. Make a long-form video with free local
+transcription, and just give me the image prompts — I'll make them in Midjourney.
+```
+
+### Case 2 — The entire pipeline is AI-generated
+
+**2a. ElevenLabs voice, verified with Scribe**
+```text
+Make a 50-second YouTube Short: "The Titanic had a twin — why did she survive?"
+Write the script: hook in the first 3 seconds, one question answered at the end, comment CTA.
+Voice: ElevenLabs voice id <voice-id>. Verify the audio with Scribe.
+Images: my ChatGPT in the browser. Budget $2.
+```
+
+**2b. OpenAI voice + OpenAI Whisper + vidIQ packaging**
+```text
+Create an 8-minute long-form explainer on how lighthouses work, for curious adults.
+OpenAI voice "onyx", calm documentary delivery. Transcribe with OpenAI Whisper.
+Images: OpenAI Images API. Budget $6. Add chapters; use vidIQ for keywords and title scoring.
+```
+
+**2c. AI voice reading YOUR finished script**
+```text
+Here's my finished script: ./scripts/ep12.md. Don't rewrite it — only fix what TTS would misread
+and show me. Voice: my cloned ElevenLabs voice <voice-id>. Short for YouTube, Instagram and TikTok.
+```
+
+**2d. AI voice + free local verification**
+```text
+Make a 45-second Short about the Voynich manuscript. OpenAI voice "nova".
+Verify the narration with local Whisper. Images: my ChatGPT.
+```
+
+### What happens in each case
+
+| | Upload (Case 1) | AI-generated (Case 2) |
+|---|---|---|
+| Order | brief → **voice ingest** → **transcribe** → script (the agent *understands* your narration) → **CP1** | brief → **script** → **CP1** → **voice generate** → **transcribe** (checks every word was spoken) |
+| Then | visual bible → directed beats → keyframes → contact-sheet review → render → **CP2** → package | same |
+| Captions | your recording's timing, script spelling if you gave one | the script's spelling, the audio's timing |
+| Paid calls | only the transcriber (if not local) and images (if API) | voice + transcriber (if not local) + images (if API) |
+
+### Replies at checkpoints and follow-ups
+
+| Say | Effect |
+|---|---|
+| "Approved." / "Approve the cut." | passes CP1 / CP2 |
+| "Reject: open on the iceberg line and cut paragraph two in half." | rewrites only that |
+| "Do one chunk / one frame first so I can check it." | tests quality + real cost before the batch |
+| "KF007 should be night; regenerate only that frame." | one regeneration, nothing else changes |
+| "It says 'Olympic' wrong — fix only that word." | respelling + one-chunk retake |
+| "Make the Instagram and TikTok versions too." | extra renders with the right end card |
+| "Continue titanic-twin." / "Where are we?" | resumes from the saved state |
+
+**→ Full guide with every case, the setting each phrase maps to, and tips: [docs/17-prompting-guide.md](docs/17-prompting-guide.md)**
 
 ## Why it works
 
@@ -105,6 +218,7 @@ projects/                 your productions (gitignored)
 | [14. Troubleshooting](docs/14-troubleshooting.md) | fixes for common problems |
 | [15. Claude Code browser setup](docs/15-claude-code-browser-setup.md) | ChatGPT image generation via Playwright |
 | [16. Using with Claude Code and Codex](docs/16-agents.md) | what to say, what the agent asks you |
+| [17. Prompting guide](docs/17-prompting-guide.md) | master prompt, every audio/transcription case, checkpoint replies |
 
 ## License
 

@@ -20,6 +20,15 @@ The repository is the brain; `faceless` (the CLI) is the control plane. Never re
    - **host**: who makes images. Inside Codex → `codex`. Inside Claude Code with Playwright → `claude-code`. Has `OPENAI_API_KEY` and wants it hands-off → `api`. Otherwise `manual`.
    - **budget**: the human's approved ceiling for paid calls. `0` blocks all paid calls — that is correct until they approve a number.
 
+### Honour the user's stated choices
+
+Anything the user names in their prompt is binding and must be passed explicitly — never left to `auto`:
+voice mode (`--voice upload|tts`), voice provider/voice id (`voice generate --provider … --voice-id …`),
+transcription provider (`transcribe --provider local|elevenlabs|openai`), image host (`--host`),
+language, format, length, platforms, budget. `auto` is only for what they didn't specify. If a stated
+choice is unavailable (missing key, not installed), say so and ask; don't silently substitute.
+See `docs/17-prompting-guide.md` for how users phrase these.
+
 ## 1. The stage loop
 
 For every stage: `faceless next <p>` → read the named skill → produce the artifact → `faceless complete <p> <stage>` → fix critical findings (max 2 repair attempts, then surface ONE evidence-backed blocker to the human).

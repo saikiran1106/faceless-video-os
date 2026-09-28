@@ -34,7 +34,7 @@ All commands print JSON. `<p>` = project slug (under `projects/`) or a path. Exi
 | `faceless voice ingest <p> FILE` | use your recording |
 | `faceless voice generate <p> [--provider auto\|elevenlabs\|openai] [--voice-id] [--model] [--retake C###] [--dry-run] [--yes]` | AI narration |
 | `faceless transcribe <p> [--provider auto\|elevenlabs\|openai\|local] [--yes]` | word-timed transcript |
-| `faceless script from-transcript <p> [--force]` | draft script from uploaded narration |
+| `faceless script from-transcript <p> [--force] [--script-file FILE]` | draft script from uploaded narration (your script’s spelling for captions) |
 
 ## Beats & images
 

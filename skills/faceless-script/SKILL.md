@@ -52,6 +52,7 @@ Present the script to the human for **CP1** before any paid voice call.
 ## Script — uploaded-audio mode ("understand the narration")
 
 1. `faceless script from-transcript <p>` drafts `script.json` from what was actually said, with sections cut at the speaker's longest pauses.
+   - If the creator gave you the **script they read from**, pass it: `faceless script from-transcript <p> --script-file <file>`. Its exact spelling and punctuation become the captions; the recording still supplies every timing. It is refused if under 70% of it was actually heard (wrong script, or heavy ad-libbing) — tell the creator which words were missing.
 2. Read the whole transcript. Replace every `TODO`: section titles, the promise question/payoff, and fix the hook if the first sentence is not it.
-3. **Never rewrite the narration text** — it must match the recording. Fix only obvious ASR misspellings of names (so captions are right).
+3. **Never rewrite the narration text** — it must match the recording. You may correct ASR misspellings of names/terms in `narration`; those corrections flow into the captions as long as the text still matches the audio (≥ 70%). Rewrites that stop matching are ignored and the raw transcript is shown instead.
 4. Summarise for the human at CP1: what the video is about, its hook, sections, and anything unclear or factually doubtful you noticed.

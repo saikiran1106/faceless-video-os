@@ -5,7 +5,7 @@ import difflib
 from pathlib import Path
 from typing import Any
 
-from .captions import normalize
+from .captions import align_script_words, normalize
 from .config import load_profile
 from .engine import ProductionEngine, StateError
 from .io import atomic_write_json, load_json, sha256_file
@@ -62,12 +62,16 @@ def run(engine: ProductionEngine, provider: str = "auto") -> dict[str, Any]:
     return {k: v for k, v in doc.items() if k != "words"} | {"word_count": len(doc["words"])}
 
 
-def script_from_transcript(engine: ProductionEngine, force: bool = False) -> dict[str, Any]:
+def script_from_transcript(engine: ProductionEngine, force: bool = False, script_file: Path | None = None) -> dict[str, Any]:
     """Draft 02-script/script.json from what was actually said.
 
     Sections are cut at the longest pauses so they follow the speaker's own
     structure. Hook/promise are left as TODO on purpose: the agent must read
     the narration and state them - the gate refuses the stage until it does.
+
+    `script_file`: the creator's own written script for this recording. Its text
+    (exact spelling of names, punctuation) becomes the narration and the captions;
+    the recording still supplies every timing. Refused if it doesn't match the audio.
     """
     state = engine.state()
     path = engine.artifact_path("script")
@@ -85,17 +89,32 @@ def script_from_transcript(engine: ProductionEngine, force: bool = False) -> dic
     for n, (lo, hi) in enumerate(zip(bounds, bounds[1:]), 1):
         text = " ".join(w["text"] for w in words[lo:hi])
         sections.append({"section_id": f"S{n:02d}", "title": "TODO section title", "text": text, "start_s": round(words[lo]["start"], 2)})
-    first_sentence = (split_sentences(transcript["text"]) or [transcript["text"]])[0]
+    narration = " ".join(w["text"] for w in words)
+    match = None
+    if script_file:
+        text = " ".join(Path(script_file).expanduser().read_text(encoding="utf-8").split())
+        match = script_match(text, words)
+        if match["ratio"] < 0.7:
+            raise StateError(
+                f"Only {match['ratio']:.0%} of that script was heard in the recording. "
+                "Is it the right script for this audio? (missing: " + " ".join(match["missing"][:12]) + ")"
+            )
+        narration = text
+        timed = align_script_words(text, words)
+        starts = [s["start_s"] for s in sections] + [float("inf")]
+        for i, section in enumerate(sections):
+            section["text"] = " ".join(w["text"] for w in timed if starts[i] - 0.01 <= w["start"] < starts[i + 1] - 0.01) or section["text"]
+    first_sentence = (split_sentences(narration) or [narration])[0]
     script = {
         "version": "1.0",
         "language": transcript.get("language") or state.get("language", "en"),
         "title": state["title"],
         "source": "transcript",
-        "narration": " ".join(w["text"] for w in words),
+        "narration": narration,
         "hook": {"text": first_sentence, "seconds": round(min(profile["hook_max_s"], duration_s), 2)},
         "promise": {"question": "TODO: the question the opening makes the viewer ask", "payoff": "TODO: the answer the ending delivers"},
         "sections": [{k: v for k, v in s.items() if k != "start_s"} for s in sections],
         "claims": [],
     }
     atomic_write_json(path, script)
-    return {"path": str(path), "sections": [{"section_id": s["section_id"], "start_s": s["start_s"], "words": len(s["text"].split())} for s in sections]}
+    return {"path": str(path), **({"script_match": match} if match else {}), "sections": [{"section_id": s["section_id"], "start_s": s["start_s"], "words": len(s["text"].split())} for s in sections]}
