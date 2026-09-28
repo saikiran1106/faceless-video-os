@@ -1,6 +1,6 @@
 ---
 name: faceless-resume
-description: Resume an existing Faceless Forge video project safely in a new Claude Code or Codex session - load its run state, approvals, locks, spend and pending image jobs, and continue from the current stage without redoing or re-buying finished work. Use when the user says continue, resume, where were we, what's next, or opens an existing project.
+description: Resume an existing Faceless Video OS video project safely in a new Claude Code or Codex session - load its run state, approvals, locks, spend and pending image jobs, and continue from the current stage without redoing or re-buying finished work. Use when the user says continue, resume, where were we, what's next, or opens an existing project.
 ---
 
 # Faceless Resume

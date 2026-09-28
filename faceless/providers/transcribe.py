@@ -36,7 +36,7 @@ def select_transcriber(provider: str = "auto") -> str:
         return "local"
     raise ProviderError(
         "No transcription provider. Add ELEVENLABS_API_KEY or OPENAI_API_KEY to .env, "
-        "or install the free local model: pip install 'faceless-forge[local-asr]'"
+        "or install the free local model: pip install 'faceless-video-os[local-asr]'"
     )
 
 

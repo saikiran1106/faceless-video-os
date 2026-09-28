@@ -66,7 +66,7 @@ def run_doctor(root: Path | None = None) -> dict[str, Any]:
         "packaging": ["vidIQ MCP (if connected in your agent)", "built-in rules"],
     }
     if not providers["transcribe"]:
-        add("transcription", False, "no transcription provider", "Add ELEVENLABS_API_KEY or OPENAI_API_KEY to .env, or pip install 'faceless-forge[local-asr]' (free, local)", "warning")
+        add("transcription", False, "no transcription provider", "Add ELEVENLABS_API_KEY or OPENAI_API_KEY to .env, or pip install 'faceless-video-os[local-asr]' (free, local)", "warning")
     if has_key("ELEVENLABS_API_KEY") and not voice_id:
         add("elevenlabs_voice", False, "ELEVENLABS_API_KEY set but no voice.elevenlabs_voice_id in channel.json", "Pick a voice at elevenlabs.io/app/voice-library and paste its id", "warning")
     upgrades = []
@@ -75,8 +75,8 @@ def run_doctor(root: Path | None = None) -> dict[str, Any]:
     if not has_key("OPENAI_API_KEY"):
         upgrades.append("OPENAI_API_KEY -> OpenAI TTS voice, Whisper transcription, and direct image API")
     if not playwright:
-        upgrades.append("pip install 'faceless-forge[browser]' && playwright install chromium -> ChatGPT image generation from Claude Code")
+        upgrades.append("pip install 'faceless-video-os[browser]' && playwright install chromium -> ChatGPT image generation from Claude Code")
     if not providers["transcribe"] or "local" not in providers["transcribe"]:
-        upgrades.append("pip install 'faceless-forge[local-asr]' -> free offline transcription (faster-whisper)")
+        upgrades.append("pip install 'faceless-video-os[local-asr]' -> free offline transcription (faster-whisper)")
     passed = not any(c["status"] == "critical" for c in checks)
     return {"passed": passed, "capabilities": capabilities, "checks": [c for c in checks if c["status"] != "ok"], "ok": [c["check"] for c in checks if c["status"] == "ok"], "one_step_upgrades": upgrades}

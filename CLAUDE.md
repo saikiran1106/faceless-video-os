@@ -1,4 +1,4 @@
-# Faceless Forge
+# Faceless Video OS
 
 **Read [AGENTS.md](AGENTS.md) before doing anything.** It is the single agent contract for this
 repository (shared with Codex) and routes your first action.

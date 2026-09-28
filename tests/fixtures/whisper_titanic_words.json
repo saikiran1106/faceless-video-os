@@ -1,0 +1,345 @@
+{
+ "duration_s": 25.007,
+ "words": [
+  {
+   "text": "In",
+   "start": 0.0,
+   "end": 0.14
+  },
+  {
+   "text": "1912,",
+   "start": 0.14,
+   "end": 1.12
+  },
+  {
+   "text": "the",
+   "start": 1.44,
+   "end": 1.6
+  },
+  {
+   "text": "Titanic",
+   "start": 1.6,
+   "end": 1.94
+  },
+  {
+   "text": "sank",
+   "start": 1.94,
+   "end": 2.38
+  },
+  {
+   "text": "on",
+   "start": 2.38,
+   "end": 2.74
+  },
+  {
+   "text": "her",
+   "start": 2.74,
+   "end": 2.94
+  },
+  {
+   "text": "first",
+   "start": 2.94,
+   "end": 3.38
+  },
+  {
+   "text": "voyage,",
+   "start": 3.38,
+   "end": 3.76
+  },
+  {
+   "text": "but",
+   "start": 4.24,
+   "end": 4.44
+  },
+  {
+   "text": "she",
+   "start": 4.44,
+   "end": 4.7
+  },
+  {
+   "text": "was",
+   "start": 4.7,
+   "end": 4.94
+  },
+  {
+   "text": "not",
+   "start": 4.94,
+   "end": 5.2
+  },
+  {
+   "text": "alone.",
+   "start": 5.2,
+   "end": 5.58
+  },
+  {
+   "text": "Her",
+   "start": 6.04,
+   "end": 6.2
+  },
+  {
+   "text": "twin",
+   "start": 6.2,
+   "end": 6.44
+  },
+  {
+   "text": "sister,",
+   "start": 6.44,
+   "end": 6.88
+  },
+  {
+   "text": "the",
+   "start": 7.2,
+   "end": 7.36
+  },
+  {
+   "text": "Olympic,",
+   "start": 7.36,
+   "end": 7.76
+  },
+  {
+   "text": "sailed",
+   "start": 8.28,
+   "end": 8.48
+  },
+  {
+   "text": "for",
+   "start": 8.48,
+   "end": 8.78
+  },
+  {
+   "text": "24",
+   "start": 8.78,
+   "end": 9.36
+  },
+  {
+   "text": "more",
+   "start": 9.36,
+   "end": 9.74
+  },
+  {
+   "text": "years.",
+   "start": 9.74,
+   "end": 10.1
+  },
+  {
+   "text": "Why",
+   "start": 10.62,
+   "end": 10.82
+  },
+  {
+   "text": "did",
+   "start": 10.82,
+   "end": 11.02
+  },
+  {
+   "text": "one",
+   "start": 11.02,
+   "end": 11.26
+  },
+  {
+   "text": "ship",
+   "start": 11.26,
+   "end": 11.54
+  },
+  {
+   "text": "die,",
+   "start": 11.54,
+   "end": 11.8
+  },
+  {
+   "text": "and",
+   "start": 12.16,
+   "end": 12.34
+  },
+  {
+   "text": "the",
+   "start": 12.34,
+   "end": 12.5
+  },
+  {
+   "text": "other",
+   "start": 12.5,
+   "end": 12.76
+  },
+  {
+   "text": "survive?",
+   "start": 12.76,
+   "end": 13.18
+  },
+  {
+   "text": "After",
+   "start": 13.66,
+   "end": 14.0
+  },
+  {
+   "text": "the",
+   "start": 14.0,
+   "end": 14.2
+  },
+  {
+   "text": "disaster,",
+   "start": 14.2,
+   "end": 14.6
+  },
+  {
+   "text": "the",
+   "start": 15.02,
+   "end": 15.18
+  },
+  {
+   "text": "Olympic",
+   "start": 15.18,
+   "end": 15.58
+  },
+  {
+   "text": "was",
+   "start": 15.58,
+   "end": 15.92
+  },
+  {
+   "text": "rebuilt",
+   "start": 15.92,
+   "end": 16.28
+  },
+  {
+   "text": "with",
+   "start": 16.28,
+   "end": 16.56
+  },
+  {
+   "text": "a",
+   "start": 16.56,
+   "end": 16.74
+  },
+  {
+   "text": "second",
+   "start": 16.74,
+   "end": 17.04
+  },
+  {
+   "text": "hull.",
+   "start": 17.04,
+   "end": 17.42
+  },
+  {
+   "text": "That",
+   "start": 17.8,
+   "end": 18.02
+  },
+  {
+   "text": "hidden",
+   "start": 18.02,
+   "end": 18.32
+  },
+  {
+   "text": "wall",
+   "start": 18.32,
+   "end": 18.58
+  },
+  {
+   "text": "of",
+   "start": 18.58,
+   "end": 18.82
+  },
+  {
+   "text": "steel",
+   "start": 18.82,
+   "end": 19.12
+  },
+  {
+   "text": "is",
+   "start": 19.12,
+   "end": 19.4
+  },
+  {
+   "text": "why",
+   "start": 19.4,
+   "end": 19.62
+  },
+  {
+   "text": "she",
+   "start": 19.62,
+   "end": 19.86
+  },
+  {
+   "text": "earned",
+   "start": 19.86,
+   "end": 20.16
+  },
+  {
+   "text": "the",
+   "start": 20.16,
+   "end": 20.38
+  },
+  {
+   "text": "name",
+   "start": 20.38,
+   "end": 20.56
+  },
+  {
+   "text": "Old",
+   "start": 20.56,
+   "end": 20.92
+  },
+  {
+   "text": "Reliable.",
+   "start": 20.92,
+   "end": 21.46
+  },
+  {
+   "text": "Would",
+   "start": 21.96,
+   "end": 22.16
+  },
+  {
+   "text": "you",
+   "start": 22.16,
+   "end": 22.32
+  },
+  {
+   "text": "have",
+   "start": 22.32,
+   "end": 22.52
+  },
+  {
+   "text": "sailed",
+   "start": 22.52,
+   "end": 22.82
+  },
+  {
+   "text": "on",
+   "start": 22.82,
+   "end": 23.08
+  },
+  {
+   "text": "her?",
+   "start": 23.08,
+   "end": 23.26
+  },
+  {
+   "text": "Tell",
+   "start": 23.6,
+   "end": 23.74
+  },
+  {
+   "text": "me",
+   "start": 23.74,
+   "end": 23.96
+  },
+  {
+   "text": "in",
+   "start": 23.96,
+   "end": 24.18
+  },
+  {
+   "text": "the",
+   "start": 24.18,
+   "end": 24.32
+  },
+  {
+   "text": "comments.",
+   "start": 24.32,
+   "end": 24.62
+  }
+ ]
+}

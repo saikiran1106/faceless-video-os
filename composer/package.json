@@ -1,8 +1,8 @@
 {
-  "name": "faceless-forge-composer",
+  "name": "faceless-video-os-composer",
   "version": "0.1.0",
   "private": true,
-  "description": "One Remotion composition (StoryVideo) that renders every Faceless Forge project from a props file.",
+  "description": "One Remotion composition (StoryVideo) that renders every Faceless Video OS project from a props file.",
   "scripts": {
     "studio": "remotion studio src/index.ts",
     "render": "remotion render src/index.ts StoryVideo",

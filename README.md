@@ -1,91 +1,111 @@
-# Faceless Forge
+# Faceless Video OS
 
-**Agent-driven, plug-and-play production pipeline for faceless YouTube, Shorts, Reels and TikTok.**
-Bring a topic, or your own voiceover. Your AI coding agent (Claude Code or Codex) runs the rest:
-script → voice → transcript → beat-synced keyframes → captions & overlays → render → publish-ready package.
+**An agent-driven, plug-and-play production system for faceless YouTube videos, Shorts, Reels and TikToks.**
+
+Give it a topic, or your own voiceover. Your AI coding agent (Claude Code or Codex) runs the whole pipeline:
+**script → voice → transcript → beat-synced keyframes → captions & text overlays → render → publish-ready package.**
 
 ```
-            ┌─────────── AI voice (ElevenLabs / OpenAI) ───────────┐
- topic ──▶ script                                                   ▼
-                                                           narration master ──▶ word-timed transcript
- your own recording ─────────────────────────────────────────────▲    (Scribe → Whisper → local)
-                                                                                   │
-        package ◀── render ◀── captions + overlays ◀── keyframes ◀── directed beats ◀┘
-   (vidIQ / rules)  (Remotion)   (word-highlighted)   (Codex / ChatGPT / API / manual)
+            ┌──────────── AI voice (ElevenLabs / OpenAI) ────────────┐
+ topic ──▶ script                                                      ▼
+                                                              narration master ──▶ word-timed transcript
+ your own recording ────────────────────────────────────────────────▲    (Scribe → Whisper → free local)
+                                                                                      │
+        package ◀── render ◀── captions + overlays ◀── keyframes ◀── directed beats ◀─┘
+   (vidIQ / rules)  (Remotion)   (word-highlighted)   (Codex / ChatGPT browser / API / manual)
 ```
 
-- **Two voice modes.** `tts`: the agent writes the script and generates the voice. `upload`: you record, the pipeline *understands* your narration and builds the video around it.
-- **Works with whatever you have.** No keys at all? Upload your voice, transcribe locally for free, generate images in Codex or by hand, render with Remotion. Each API key you add unlocks more automation.
-- **Host-aware image generation.** In Codex it uses Codex's built-in image tool. In Claude Code it drives ChatGPT in a signed-in browser. With an OpenAI key it can call the Images API directly. Same jobs, same outputs.
-- **Sync you can't break.** The narration is the only clock. Beats are measured from word timings, each beat gets exactly one keyframe, and deterministic gates block gaps, overlaps, recast frames and wrong aspect ratios.
-- **Human in the loop only where it matters.** Two checkpoints (approve the story, approve the cut) plus publishing. Every paid call is estimated first, capped by a budget, and needs `--yes`.
-- **Short and long form.** 9:16 Shorts/Reels/TikTok and 16:9 long-form with chapters, from the same pipeline.
-
-## Quick start
+## Install — one command
 
 ```bash
-git clone <this repo> faceless-forge && cd faceless-forge
-make install          # Python CLI (.venv) + Remotion composer + channel.json/.env
-make demo             # a free, offline end-to-end video: no API keys needed
+git clone https://github.com/saikiran1106/faceless-video-os
+cd faceless-video-os
+./install.sh            # macOS / Linux      (Windows: powershell -ExecutionPolicy Bypass -File install.ps1)
+faceless demo           # free, offline test video — no API keys needed
 ```
-The demo writes `projects/demo-short/08-compose/renders/demo-short_youtube.mp4`. If you see a 9:16 video with synced, word-highlighted captions, a CTA and an end card, the install works.
+
+`install.sh` installs **everything**: Python, ffmpeg, Node.js, Remotion and its headless browser, Playwright + Chromium for the Claude Code image host, free offline transcription, the `faceless` CLI, your config files, and the agent skills. It's idempotent: re-run it any time to repair or update. → [Installation details](docs/01-getting-started.md)
 
 Then open the folder in **Claude Code** or **Codex** and say:
 
 > Make a 60-second Short about why the Titanic's sister ship survived.
 
-or
-
 > Here's my voiceover: ~/Desktop/episode3.m4a. Turn it into a long-form video.
 
-The agent reads [`AGENTS.md`](AGENTS.md), runs `faceless doctor`, picks the right mode and host, and walks the stages with you.
+## Why it works
 
-Requirements: Python 3.10+, ffmpeg, Node.js 18+ (for Remotion). Optional: `pip install -e ".[browser]"` for the Claude Code image host, `".[local-asr]"` for free offline transcription.
+- **Two voice modes.** `tts`: the agent writes the script and generates the voice. `upload`: you record; the pipeline transcribes your narration, *understands* its story, and builds the video around it.
+- **Start free, add keys when you want.** With no keys: upload your voice, transcribe locally, make images in Codex / your ChatGPT / by hand, render with Remotion. Each key unlocks more automation.
+- **Host-aware images.** Codex → its built-in image tool. Claude Code → ChatGPT in your signed-in browser ([setup](docs/15-claude-code-browser-setup.md)). OpenAI key → the Images API. Or copy-paste prompts anywhere. Same jobs, same output paths.
+- **Sync you can't break.** The narration is the only clock. Beats are measured from word timings; every beat owns exactly one keyframe; captions use your script's spelling with the audio's timing. Gates block gaps, overlaps, recast frames, wrong aspect ratios.
+- **Human only where it matters.** Two checkpoints (approve the story, approve the cut) plus publishing. Every paid call is estimated first (minimum + worst case), capped by a budget, and needs `--yes`. Crashed runs never pay twice.
+- **Short and long form.** 9:16 Shorts/Reels/TikTok with punchy 3-word captions; 16:9 long-form with chapters. Platform-specific end cards (Subscribe / Follow).
 
 ## What you need for each capability
 
-| Capability | Free / no key | With keys |
+| Capability | Free / no key | With keys or subscriptions |
 |---|---|---|
-| Narration | Your own recording | ElevenLabs (`ELEVENLABS_API_KEY`) or OpenAI TTS (`OPENAI_API_KEY`) |
-| Transcription | Local faster-whisper | ElevenLabs Scribe → OpenAI Whisper |
-| Keyframes | Codex built-in, ChatGPT via browser (your subscription), or manual | OpenAI Images API |
-| Render | Remotion (Node) or ffmpeg fallback | — |
-| Packaging | Built-in YouTube rules | vidIQ MCP connected in your agent |
+| Narration | your own recording | ElevenLabs (incl. cloned voices) · OpenAI TTS |
+| Transcription | local faster-whisper | ElevenLabs Scribe · OpenAI Whisper |
+| Keyframes | Codex built-in · manual | ChatGPT via browser (your plan) · OpenAI Images API |
+| Render | Remotion · ffmpeg fallback | — |
+| Packaging | built-in YouTube rules | vidIQ MCP (keywords, title & thumbnail scoring) |
+
+## The pipeline
+
+| # | Stage | Output | Who |
+|---|---|---|---|
+| 1 | brief | topic, promise, format, target length | agent |
+| 2 | script | narration with hook → payoff, sections, CTA — **CP1: you approve** | agent / derived from your audio |
+| 3 | voice | `narration.wav` (normalised) | ElevenLabs / OpenAI / your file |
+| 4 | transcript | word timings (+ script match check) | Scribe / Whisper / local |
+| 5 | visual bible | style, characters, locations, reference sheets | agent + image host |
+| 6 | beats | measured beats, each directed: what to show, shot size, camera move, overlay | CLI + agent |
+| 7 | keyframes | one image per beat, reviewed on a contact sheet | image host |
+| 8 | compose | MP4 per platform — **CP2: you approve** | Remotion |
+| 9 | package | title, description, tags, hashtags, chapters, SRT, thumbnail | agent (+ vidIQ) |
+
+→ [How it works](docs/02-how-it-works.md) · [Step-by-step workflows](docs/03-workflows.md)
 
 ## Repository layout
 
 ```
-faceless/            Python control plane: state machine, gates, providers, compose, CLI
-  providers/         TTS, transcription, image API adapters
-  browser/           ChatGPT image adapter (Playwright) for the Claude Code host
-  schemas/           JSON Schema for every stage artifact
-  profiles/          short.json (9:16) and longform.json (16:9) pacing/caption/format rules
-composer/            One Remotion composition (StoryVideo) that renders any project from props
-skills/              The reusable agent skills (canonical)
-.claude/skills/      Mirror for Claude Code        .agents/skills/  Mirror for Codex
-docs/                Full documentation
-examples/            Example brief, script, visual bible, beats
-projects/            Your productions (gitignored)
+install.sh / install.ps1  one-command installers (macOS/Linux, Windows)
+AGENTS.md / CLAUDE.md     the agent contract (Codex / Claude Code entry points)
+faceless/                 Python control plane: state machine, gates, providers, compose, CLI
+  providers/              TTS, transcription and image-API adapters
+  browser/                ChatGPT image adapter (Playwright) for the Claude Code host
+  schemas/                JSON Schema for every stage artifact
+  profiles/               short.json (9:16) and longform.json (16:9)
+composer/                 one Remotion composition (StoryVideo) that renders any project from props
+skills/                   the 9 agent skills (canonical)  →  mirrored to .claude/skills and .agents/skills
+docs/                     documentation (below)
+examples/                 filled-in example artifacts
+tests/                    pytest suite (offline, no keys)
+projects/                 your productions (gitignored)
 ```
 
 ## Documentation
 
-Start at [docs/README.md](docs/README.md):
-[Getting started](docs/01-getting-started.md) ·
-[How it works](docs/02-how-it-works.md) ·
-[Workflows](docs/03-workflows.md) ·
-[Voice & audio](docs/04-voice-and-audio.md) ·
-[Providers & costs](docs/05-providers.md) ·
-[Keyframes & hosts](docs/06-keyframes-and-hosts.md) ·
-[Compose & render](docs/07-compose-and-render.md) ·
-[Packaging & vidIQ](docs/08-packaging-and-vidiq.md) ·
-[Configuration](docs/09-configuration.md) ·
-[CLI reference](docs/10-cli-reference.md) ·
-[Skills](docs/11-skills.md) ·
-[Extending](docs/12-extending.md) ·
-[Quality gates](docs/13-quality-gates.md) ·
-[Troubleshooting](docs/14-troubleshooting.md)
+| | |
+|---|---|
+| [1. Getting started](docs/01-getting-started.md) | installer, options, first video, uninstall |
+| [2. How it works](docs/02-how-it-works.md) | stages, artifacts, gates, checkpoints, sync model |
+| [3. Workflows](docs/03-workflows.md) | recipes: AI-voice short, own-voice long-form, fixes, re-renders |
+| [4. Voice & audio](docs/04-voice-and-audio.md) | recording tips, TTS providers, retakes, pronunciation, music |
+| [5. Providers & costs](docs/05-providers.md) | provider matrix, selection order, budgets, rates |
+| [6. Keyframes & hosts](docs/06-keyframes-and-hosts.md) | visual bible, directing beats, image hosts, binding law |
+| [7. Compose & render](docs/07-compose-and-render.md) | motion, captions, overlays, CTAs, fonts, platforms |
+| [8. Packaging & vidIQ](docs/08-packaging-and-vidiq.md) | titles, descriptions, chapters, thumbnails |
+| [9. Configuration](docs/09-configuration.md) | `channel.json`, `.env`, format profiles |
+| [10. CLI reference](docs/10-cli-reference.md) | every `faceless` command |
+| [11. Skills](docs/11-skills.md) | how the skills work; customising them |
+| [12. Extending](docs/12-extending.md) | new providers, overlay styles, gates, formats |
+| [13. Quality gates](docs/13-quality-gates.md) | every FF-* rule |
+| [14. Troubleshooting](docs/14-troubleshooting.md) | fixes for common problems |
+| [15. Claude Code browser setup](docs/15-claude-code-browser-setup.md) | ChatGPT image generation via Playwright |
+| [16. Using with Claude Code and Codex](docs/16-agents.md) | what to say, what the agent asks you |
 
 ## License
 
-MIT. You are responsible for the rights to the content you generate and the terms of the AI services you connect.
+MIT. You are responsible for rights to the content you generate and for following the terms of the AI services you connect.

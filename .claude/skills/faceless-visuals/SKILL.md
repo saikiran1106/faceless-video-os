@@ -1,6 +1,6 @@
 ---
 name: faceless-visuals
-description: Build the look of a Faceless Forge video - visual bible (style, characters, locations, reference sheets), directed beats (what each narration slot must show, shot scale, camera move, overlays), and one keyframe image per beat generated on the current host (Codex built-in image tool, ChatGPT via Playwright browser in Claude Code, OpenAI Images API, or manual). Use for the visual_bible, beats and keyframes stages, and for any keyframe regeneration or image-prompt work.
+description: Build the look of a Faceless Video OS video - visual bible (style, characters, locations, reference sheets), directed beats (what each narration slot must show, shot scale, camera move, overlays), and one keyframe image per beat generated on the current host (Codex built-in image tool, ChatGPT via Playwright browser in Claude Code, OpenAI Images API, or manual). Use for the visual_bible, beats and keyframes stages, and for any keyframe regeneration or image-prompt work.
 ---
 
 # Faceless Visuals

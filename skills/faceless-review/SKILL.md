@@ -1,6 +1,6 @@
 ---
 name: faceless-review
-description: Independently review a Faceless Forge stage before it is locked or shown to the human - script, narration, beats, keyframes, render and package - against the brief, the locked artifacts and the rendered pixels. Use before CP1, before CP2, after any regeneration, and whenever asked to audit, QA or double-check a video.
+description: Independently review a Faceless Video OS stage before it is locked or shown to the human - script, narration, beats, keyframes, render and package - against the brief, the locked artifacts and the rendered pixels. Use before CP1, before CP2, after any regeneration, and whenever asked to audit, QA or double-check a video.
 ---
 
 # Faceless Review

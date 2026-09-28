@@ -1,16 +1,17 @@
-.PHONY: install install-all test demo doctor skills
+.PHONY: install install-minimal test demo doctor skills lint
 
-install:            ## core install (Python CLI + Remotion composer)
-	python3 -m venv .venv && .venv/bin/pip install -e ".[dev]"
-	cd composer && npm install
-	.venv/bin/faceless setup
+install:            ## everything: system tools, CLI, Remotion, browser host, local transcription
+	./install.sh
 
-install-all:        ## + browser image host + free local transcription
-	.venv/bin/pip install -e ".[all]" && .venv/bin/playwright install chromium
+install-minimal:    ## CLI + Remotion only
+	./install.sh --minimal
 
 test:
 	.venv/bin/pytest -q
 	cd composer && npx tsc --noEmit
+
+lint:
+	shellcheck -S warning install.sh
 
 demo:               ## free offline end-to-end run
 	.venv/bin/faceless demo --format short

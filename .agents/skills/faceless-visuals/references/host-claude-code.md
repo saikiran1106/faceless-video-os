@@ -1,16 +1,17 @@
 # Keyframes on Claude Code (ChatGPT through a Playwright browser)
 
-Claude Code has no built-in image model, so Faceless Forge drives the ChatGPT web app in a
+Claude Code has no built-in image model, so Faceless Video OS drives the ChatGPT web app in a
 persistent, signed-in Chromium profile. It operates the normal UI only: it never reads
 cookies or tokens, never replays private endpoints, and never solves CAPTCHAs.
 
 ## One-time setup (the human does the sign-in)
 
+`./install.sh` already installed Playwright + Chromium (re-run it if `faceless browser doctor` says Playwright is missing).
 ```bash
-pip install -e ".[browser]" && playwright install chromium
 faceless browser setup          # a window opens; the HUMAN signs in to ChatGPT, completes any MFA
 faceless browser doctor         # non-consuming health check: signed in, composer found, uploads OK
 ```
+Never type the user's credentials yourself; ask them to sign in in the window. Full guide: `docs/15-claude-code-browser-setup.md`.
 The profile lives in `~/.faceless/browser-profiles/` (outside the repo, owner-only).
 Optional: set `FACELESS_CHATGPT_PROJECT_URL` in `.env` to a ChatGPT Project URL. A Project
 carries your channel's style notes and characters across chats and keeps frames on-model.

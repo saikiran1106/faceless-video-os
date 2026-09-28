@@ -1,6 +1,6 @@
 ---
 name: faceless-voice
-description: Produce the narration master for a Faceless Forge project - either generate it with an AI voice (ElevenLabs or OpenAI TTS) from the approved script, or ingest and normalise the creator's own recording. Use for the voice stage, for voice retakes, pronunciation fixes, or when someone says "use my voiceover/audio".
+description: Produce the narration master for a Faceless Video OS project - either generate it with an AI voice (ElevenLabs or OpenAI TTS) from the approved script, or ingest and normalise the creator's own recording. Use for the voice stage, for voice retakes, pronunciation fixes, or when someone says "use my voiceover/audio".
 ---
 
 # Faceless Voice

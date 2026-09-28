@@ -1,8 +1,8 @@
-# Faceless Forge documentation
+# Faceless Video OS documentation
 
 | # | Page | Read it when |
 |---|---|---|
-| 1 | [Getting started](01-getting-started.md) | Installing, first demo, first real video |
+| 1 | [Getting started](01-getting-started.md) | One-command install, options, first video, uninstall |
 | 2 | [How it works](02-how-it-works.md) | You want the mental model: stages, artifacts, gates, checkpoints |
 | 3 | [Workflows](03-workflows.md) | Step-by-step recipes for common jobs |
 | 4 | [Voice & audio](04-voice-and-audio.md) | AI voice vs your own recording, retakes, pronunciation |
@@ -16,3 +16,5 @@
 | 12 | [Extending](12-extending.md) | Adding providers, overlay styles, gates, formats |
 | 13 | [Quality gates](13-quality-gates.md) | What each FF-* rule checks and how to fix it |
 | 14 | [Troubleshooting](14-troubleshooting.md) | Something broke |
+| 15 | [Claude Code browser setup](15-claude-code-browser-setup.md) | Generating images with ChatGPT from Claude Code |
+| 16 | [Using with Claude Code and Codex](16-agents.md) | What to say to the agent and what it will ask you |

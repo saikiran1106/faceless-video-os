@@ -1,4 +1,4 @@
-"""`faceless` - the command line for Faceless Forge.
+"""`faceless` - the command line for Faceless Video OS.
 
 Every command prints JSON so agents can read it; humans get the same facts.
 Paid commands estimate first and refuse to spend without --yes.
@@ -47,7 +47,7 @@ def _confirm(args, estimate: dict) -> bool:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(prog="faceless", description="Faceless Forge: agent-driven faceless video pipeline")
+    p = argparse.ArgumentParser(prog="faceless", description="Faceless Video OS: agent-driven faceless video pipeline")
     sub = p.add_subparsers(dest="command", required=True)
 
     sub.add_parser("setup", help="create channel.json/.env from the examples and sync skills")

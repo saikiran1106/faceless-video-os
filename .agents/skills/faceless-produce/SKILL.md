@@ -1,6 +1,6 @@
 ---
 name: faceless-produce
-description: Run or continue an end-to-end faceless video production (YouTube long-form, Shorts, Reels, TikTok) with Faceless Forge - brief, script, AI voice or the creator's own recording, transcript, visual bible, beat-synced keyframes, captions/overlays, render and publishing package. Use whenever someone asks to make, produce, create or continue a faceless/narrated video, short or reel, or says "make a video about X", "I have my voiceover", "turn this audio into a video".
+description: Run or continue an end-to-end faceless video production (YouTube long-form, Shorts, Reels, TikTok) with Faceless Video OS - brief, script, AI voice or the creator's own recording, transcript, visual bible, beat-synced keyframes, captions/overlays, render and publishing package. Use whenever someone asks to make, produce, create or continue a faceless/narrated video, short or reel, or says "make a video about X", "I have my voiceover", "turn this audio into a video".
 ---
 
 # Faceless Produce — the orchestrator

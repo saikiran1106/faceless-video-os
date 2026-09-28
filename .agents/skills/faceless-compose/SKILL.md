@@ -1,6 +1,6 @@
 ---
 name: faceless-compose
-description: Assemble and render a Faceless Forge video - beat-synced keyframes with camera motion and transitions, word-highlighted captions, text overlays, CTAs, end card and optional music - with Remotion (or an ffmpeg fallback), for YouTube, Shorts, Instagram Reels or TikTok. Use for the compose stage, re-renders, caption/overlay placement fixes, or "render the video".
+description: Assemble and render a Faceless Video OS video - beat-synced keyframes with camera motion and transitions, word-highlighted captions, text overlays, CTAs, end card and optional music - with Remotion (or an ffmpeg fallback), for YouTube, Shorts, Instagram Reels or TikTok. Use for the compose stage, re-renders, caption/overlay placement fixes, or "render the video".
 ---
 
 # Faceless Compose

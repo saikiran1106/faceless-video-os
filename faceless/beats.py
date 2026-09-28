@@ -32,10 +32,11 @@ def _split_long(group: list[dict[str, Any]], target_s: float, max_s: float) -> l
     if group[-1]["end"] - group[0]["start"] <= max_s or len(group) < 2:
         return [group]
     start = group[0]["start"]
+    min_part = max(0.8, target_s * 0.4)
     best_index, best_score = None, float("inf")
     for i in range(1, len(group)):
         left = group[i - 1]["end"] - start
-        if left < target_s * 0.5 or group[-1]["end"] - group[i]["start"] < target_s * 0.5:
+        if left < min_part or group[-1]["end"] - group[i]["start"] < min_part:
             continue
         score = abs(left - target_s)
         if CLAUSE_END.search(group[i - 1]["text"]):
@@ -56,17 +57,33 @@ def build_beats(words: list[dict[str, Any]], audio_duration_s: float, pacing: di
     for sentence in _sentences(words):
         groups.extend(_split_long(sentence, target_s, max_s))
 
-    # Merge beats that would flash by too fast into a neighbour.
-    merged: list[list[dict[str, Any]]] = []
-    for group in groups:
-        span = group[-1]["end"] - group[0]["start"]
-        if merged and span < min_s and (group[-1]["end"] - merged[-1][0]["start"]) <= max_s * 1.25:
-            merged[-1] = merged[-1] + group
-        else:
-            merged.append(group)
-    if len(merged) > 1 and merged[0][-1]["end"] - merged[0][0]["start"] < min_s:
-        merged[1] = merged[0] + merged[1]
-        merged.pop(0)
+    # Merge beats that would flash by too fast into whichever neighbour gives the
+    # shorter combined beat, as long as that stays under the longest allowed hold.
+    max_hold = pacing.get("max_hold_s", max_s * 1.25)
+    merged: list[list[dict[str, Any]]] = [list(g) for g in groups]
+
+    def screen_end(k: int) -> float:
+        """A beat stays on screen until the next beat's first word (or the audio ends)."""
+        return merged[k + 1][0]["start"] if k + 1 < len(merged) else max(audio_duration_s, merged[k][-1]["end"])
+
+    changed = True
+    while changed and len(merged) > 1:
+        changed = False
+        for i, group in enumerate(merged):
+            if screen_end(i) - group[0]["start"] >= min_s:
+                continue
+            options = []
+            if i > 0:
+                options.append((screen_end(i) - merged[i - 1][0]["start"], i - 1))
+            if i + 1 < len(merged):
+                options.append((screen_end(i + 1) - group[0]["start"], i + 1))
+            combined, j = min(options)
+            if combined > max_hold:
+                continue
+            lo, hi = sorted((i, j))
+            merged[lo : hi + 1] = [merged[lo] + merged[hi]]
+            changed = True
+            break
 
     beats: list[dict[str, Any]] = []
     for index, group in enumerate(merged):

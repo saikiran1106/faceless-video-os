@@ -1,6 +1,6 @@
 ---
 name: faceless-transcribe
-description: Create the word-timed transcript that syncs everything in a Faceless Forge video - ElevenLabs Scribe when an ElevenLabs key exists, otherwise OpenAI Whisper, otherwise free local faster-whisper - and verify AI narration against its script. Use for the transcript stage, caption timing problems, or "the captions/beats are out of sync".
+description: Create the word-timed transcript that syncs everything in a Faceless Video OS video - ElevenLabs Scribe when an ElevenLabs key exists, otherwise OpenAI Whisper, otherwise free local faster-whisper - and verify AI narration against its script. Use for the transcript stage, caption timing problems, or "the captions/beats are out of sync".
 ---
 
 # Faceless Transcribe
@@ -8,7 +8,7 @@ description: Create the word-timed transcript that syncs everything in a Faceles
 ```bash
 faceless transcribe <p>                 # auto: elevenlabs -> openai -> local
 faceless transcribe <p> --yes           # when it shows a cost estimate
-faceless transcribe <p> --provider local  # free, offline (pip install 'faceless-forge[local-asr]')
+faceless transcribe <p> --provider local  # free, offline (pip install 'faceless-video-os[local-asr]')
 faceless complete <p> transcript
 ```
 
@@ -20,7 +20,7 @@ Output `04-transcript/transcript.json`: `words[{text,start,end}]`, full `text`, 
 |---|---|---|
 | ElevenLabs Scribe (`scribe_v2`) | `ELEVENLABS_API_KEY` | Best word timings, 90+ languages, long files |
 | OpenAI `whisper-1` | `OPENAI_API_KEY` | Word timestamps; audio auto-compressed under the 25 MB cap |
-| Local faster-whisper | `pip install 'faceless-forge[local-asr]'` | Free, private; slower; set `FACELESS_LOCAL_WHISPER_MODEL=medium` for accuracy |
+| Local faster-whisper | `pip install 'faceless-video-os[local-asr]'` | Free, private; slower; set `FACELESS_LOCAL_WHISPER_MODEL=medium` for accuracy |
 
 Pass the right `--language` at `init`; auto-detection mislabels short clips.
 

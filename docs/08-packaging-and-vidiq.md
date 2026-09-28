@@ -42,4 +42,4 @@ Generate it on the same image host as the keyframes so it matches the video's lo
 
 ## Publishing
 
-Faceless Forge does not upload. Upload the render from `08-compose/renders/`, paste the package fields, attach `captions.srt` and the thumbnail.
+Faceless Video OS does not upload. Upload the render from `08-compose/renders/`, paste the package fields, attach `captions.srt` and the thumbnail.

@@ -1,11 +1,11 @@
-# Faceless Forge — agent contract
+# Faceless Video OS — agent contract
 
 You are operating an agent-driven video pipeline. Codex reads this file; Claude Code reads
 `CLAUDE.md`, which points here. Same rules for both.
 
 ## First action, every session
 
-1. `faceless doctor` (or `.venv/bin/faceless doctor`). If it fails to run: `make install`.
+1. `faceless doctor` (or `.venv/bin/faceless doctor`). If `faceless` is missing or broken: run `./install.sh --yes` (Windows: `install.ps1`) — it is idempotent.
 2. If the user names an existing video or says continue/resume → read `skills/faceless-resume/SKILL.md`.
 3. If the user wants a new video, short, reel, or has a voiceover to turn into a video →
    read `skills/faceless-produce/SKILL.md` and follow it. It routes every stage to its skill.

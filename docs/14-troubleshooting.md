@@ -4,7 +4,11 @@ Start with `faceless doctor` and `faceless next <p>` — most answers are in the
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| `faceless: command not found` | venv not on PATH | `source .venv/bin/activate` or use `.venv/bin/faceless` |
+| Installer stopped at a step | that step failed (message shows which) | fix it, re-run `./install.sh` — finished steps are skipped |
+| `faceless: command not found` | new terminal not opened, or `~/.local/bin` not on PATH | open a new terminal, or use `.venv/bin/faceless` |
+| faster-whisper won't install | Python 3.14+ in `.venv` | `./install.sh --recreate-venv` (it picks 3.10–3.13) |
+| Linux: Remotion/Chromium "error while loading shared libraries" | missing system libs | re-run `./install.sh` (installs them), or `sudo .venv/bin/playwright install-deps chromium` |
+| Linux: Node too old | distro Node < 18 | `./install.sh` installs Node LTS with nvm; open a new terminal |
 | `ffmpeg is not installed` | missing binary | install ffmpeg (see Getting started) |
 | `Composer dependencies are missing` | no `node_modules` | `cd composer && npm install` |
 | Remotion render fails on fonts | `style.font_file` path wrong | path is relative to the repo root; check `faceless doctor` |

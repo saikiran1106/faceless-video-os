@@ -45,3 +45,17 @@ def test_keep_directions_rebinds_only_unchanged_lines():
     assert new[0]["keyframe_id"] == old[0]["keyframe_id"] and new[0]["visual_objective"]
     assert new[-1]["keyframe_id"] not in {b["keyframe_id"] for b in old}
     assert result["new_needing_direction"] == [new[-1]["beat_id"]]
+
+
+def test_real_whisper_words_cut_at_clauses_not_mid_phrase():
+    """Regression: real faster-whisper output for the demo narration."""
+    import json
+    from pathlib import Path
+
+    data = json.loads((Path(__file__).parent / "fixtures" / "whisper_titanic_words.json").read_text())
+    beats = build_beats(data["words"], data["duration_s"], PACING)
+    texts = [b["text"] for b in beats]
+    assert texts[0].endswith("voyage,")            # cut at the comma, not "...sank on her | first voyage"
+    assert texts[1] == "but she was not alone."   # the reveal keeps its own beat
+    assert texts[-1].startswith("Would you")      # the closing question stays with its CTA
+    assert all(b["end_s"] - b["start_s"] >= PACING["min_s"] for b in beats)

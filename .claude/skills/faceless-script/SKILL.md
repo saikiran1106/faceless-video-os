@@ -1,6 +1,6 @@
 ---
 name: faceless-script
-description: Write the brief and narration script for a faceless video (Shorts/Reels or long-form) in any language - hook, one promise, retention structure, sections, CTA - or, when the creator uploaded their own audio, derive the script from the transcript. Use for the brief and script stages of Faceless Forge, or whenever asked to write/fix a voiceover script.
+description: Write the brief and narration script for a faceless video (Shorts/Reels or long-form) in any language - hook, one promise, retention structure, sections, CTA - or, when the creator uploaded their own audio, derive the script from the transcript. Use for the brief and script stages of Faceless Video OS, or whenever asked to write/fix a voiceover script.
 ---
 
 # Faceless Script

@@ -1,6 +1,6 @@
 ---
 name: faceless-package
-description: Create the publishing package for a Faceless Forge video - title, description, tags, hashtags, chapters, captions file, pinned comment and thumbnail - using the vidIQ MCP tools when they are connected (keyword research, title generation and scoring, thumbnail scoring) and built-in packaging rules when they are not. Use for the package stage, "write the title/description", "make a thumbnail", or YouTube SEO for a finished video.
+description: Create the publishing package for a Faceless Video OS video - title, description, tags, hashtags, chapters, captions file, pinned comment and thumbnail - using the vidIQ MCP tools when they are connected (keyword research, title generation and scoring, thumbnail scoring) and built-in packaging rules when they are not. Use for the package stage, "write the title/description", "make a thumbnail", or YouTube SEO for a finished video.
 ---
 
 # Faceless Package
