@@ -1,0 +1,141 @@
+{
+  "id": "seek-t",
+  "title": "This video is code",
+  "series": "AI Tutorials",
+  "bpm": 120,
+  "fps": 30,
+  "formats": ["9:16", "1:1", "16:9"],
+  "music": null,
+  "sources": { "article": { "file": "sources/notes.md", "url": "https://x.com/e1genqq/status/2110016031917855006" } },
+  "claims": [
+    { "text": "3 × 3 × 2 = 18", "source": "article", "quote": "3 hooks × 3 formats × 2 CTAs = 18 exports." },
+    { "text": "frame 600 without frames 0 to 599", "source": "article", "quote": "produce frame 600 without rendering frames 0 through 599 first" },
+    { "text": "t = frame / 30, so frame 600 = 20 s", "source": "article", "quote": "t = f / 30" }
+  ],
+
+  "hooks": {
+    "A": { "beats": 6, "note": "the claim about itself",
+      "hero": { "at": 0, "pos": [0.5, 0.52], "w": 600, "h": 200, "fill": "accent" },
+      "items": [
+        { "kind": "text", "text": "This video is", "at": 0, "until": 5.75, "fx": "none", "pos": [0.5, 0.34], "size": 110 },
+        { "kind": "text", "text": "code.", "at": 0, "until": 5.75, "fx": "none", "pos": "hero", "size": 124, "font": "mono", "color": "accentInk" },
+        { "kind": "text", "text": "No After Effects.\nNo video model.", "at": 1, "until": 5.75, "fx": "words", "pos": [0.5, 0.72], "size": 56, "weight": 600, "color": "mute" }
+      ] },
+    "B": { "beats": 6, "note": "the result first",
+      "hero": { "at": 0, "pos": [0.5, 0.52], "w": 680, "h": 200, "fill": "accent" },
+      "items": [
+        { "kind": "text", "text": "One brief in.", "at": 0, "until": 5.75, "fx": "none", "pos": [0.5, 0.34], "size": 110 },
+        { "kind": "text", "text": "18 videos", "at": 0, "until": 5.75, "fx": "none", "pos": "hero", "size": 104, "color": "accentInk", "weight": 900 },
+        { "kind": "text", "text": "3 hooks · 3 formats · 2 CTAs", "at": 1, "until": 5.75, "fx": "words", "pos": [0.5, 0.72], "size": 52, "weight": 600, "color": "mute" }
+      ] },
+    "C": { "beats": 6, "note": "the surprising mechanism",
+      "hero": { "at": 0, "pos": [0.5, 0.52], "w": 440, "h": 200, "fill": "accent" },
+      "items": [
+        { "kind": "text", "text": "Draw frame", "at": 0, "until": 5.75, "fx": "none", "pos": [0.5, 0.34], "size": 110 },
+        { "kind": "text", "text": "600", "at": 0, "until": 5.75, "fx": "none", "pos": "hero", "size": 128, "font": "mono", "color": "accentInk" },
+        { "kind": "text", "text": "before frames 0–599.", "at": 1, "until": 5.75, "fx": "words", "pos": [0.5, 0.72], "size": 56, "weight": 600, "color": "mute" }
+      ] }
+  },
+
+  "body": [
+    { "id": "code", "beats": 8,
+      "hero": { "at": 0, "pos": [0.5, 0.52], "w": 900, "h": 400, "r": 32, "fill": "panel", "stroke": "line", "sw": 2, "whoosh": "whoosh" },
+      "items": [
+        { "kind": "text", "text": "Every frame is a\n*function* of time.", "at": 0.5, "until": 7.85, "fx": "words", "pos": [0.5, 0.12], "size": 76 },
+        { "kind": "code", "lines": ["window.seek = (t) => {", "  const s = state(t)", "  draw(s)", "}"], "at": 1.2, "until": 7.85, "size": 42, "cps": 26 }
+      ] },
+
+    { "id": "scrub", "beats": 10,
+      "hero": { "at": 0, "pos": [0.5, 0.44], "w": 620, "h": 560, "r": 44, "fill": "paper", "whoosh": "whoosh-b" },
+      "items": [
+        { "kind": "text", "text": "Drag *t*.\nThe frame follows.", "at": 0.5, "until": 6.8, "fx": "words", "pos": [0.5, 0.08], "size": 76 },
+        { "kind": "scrub", "at": 1, "until": 9.85, "pos": [0.5, 0.84], "width": 760, "span": 4.0, "v0": 0.0 },
+        { "kind": "text", "text": "Same *t*.\nSame frame.", "at": 7.1, "until": 9.85, "fx": "words", "pos": [0.5, 0.08], "size": 76 }
+      ],
+      "cursor": [
+        { "at": 1.6, "to": "anchor:scrub.track", "frac": 0.0, "press": "down" },
+        { "at": 3.0, "to": "anchor:scrub.track", "frac": 0.86 },
+        { "at": 4.8, "to": "anchor:scrub.track", "frac": 0.28 },
+        { "at": 6.2, "to": "anchor:scrub.track", "frac": 0.62, "press": "up" }
+      ] },
+
+    { "id": "math", "beats": 6,
+      "hero": { "at": 0, "pos": [0.5, 0.44], "w": 720, "h": 210, "fill": "accent", "whoosh": "whoosh" },
+      "items": [
+        { "kind": "text", "text": "No need to play\n*0–599* first.", "at": 0.4, "until": 5.85, "fx": "words", "pos": [0.5, 0.12], "size": 76 },
+        { "kind": "count", "prefix": "frame ", "from": 0, "to": 600, "dec": 0, "at": 0.4, "roll": [0.6, 2.0], "until": 5.85, "pos": "hero", "size": 92, "font": "mono", "color": "accentInk", "sfx": "pop" },
+        { "kind": "text", "text": "÷ 30 fps = *20 s*", "at": 2.9, "until": 5.85, "fx": "words", "pos": [0.5, 0.66], "size": 84 }
+      ] },
+
+    { "id": "pipe", "beats": 10,
+      "hero": [
+        { "at": 0, "rect": "nodes.0", "fill": "accent", "whoosh": "whoosh-b" },
+        { "at": 2.0, "rect": "nodes.1", "fill": "accent" },
+        { "at": 3.2, "rect": "nodes.2", "fill": "accent" },
+        { "at": 4.4, "rect": "nodes.3", "fill": "accent" },
+        { "at": 5.6, "rect": "nodes.4", "fill": "accent" }
+      ],
+      "items": [
+        { "kind": "text", "text": "One brief.\n*One engine.*", "at": 0.3, "until": 9.85, "fx": "words", "pos": [0.5, 0.1], "size": 80 },
+        { "kind": "nodes", "name": "nodes", "labels": ["brief.json", "scene data", "seek(t)", "render", "18 MP4s"], "at": 0.8, "step": 1.2, "until": 9.85,
+          "area": [0.3, 0.92], "area@16:9": [0.16, 0.86], "w": 600, "h": 116, "size": 46 }
+      ] },
+
+    { "id": "tabs", "beats": 6,
+      "hero": [
+        { "at": 0, "rect": "tabs.0", "fill": "accent", "whoosh": "whoosh" },
+        { "at": 1.7, "rect": "tabs.2", "fill": "accent", "lead": [0.72, 3.6], "trail": [0.9, 1.4] },
+        { "at": 3.3, "rect": "tabs.0", "fill": "accent", "lead": [0.72, 3.6], "trail": [0.9, 1.4] },
+        { "at": 4.7, "rect": "tabs.1", "fill": "accent", "lead": [0.72, 3.6], "trail": [0.9, 1.4] }
+      ],
+      "items": [
+        { "kind": "text", "text": "Leading edge first.\n*Trailing edge follows.*", "at": 0.3, "until": 5.85, "fx": "words", "pos": [0.5, 0.12], "size": 72 },
+        { "kind": "tabs", "name": "tabs", "labels": ["Hook", "Body", "CTA"], "at": 0.2, "until": 5.85, "pos": [0.5, 0.5], "w": 900, "h": 150, "size": 50 }
+      ],
+      "cursor": [
+        { "at": 0.8, "to": "anchor:tabs.2", "press": "click", "dy": 20 },
+        { "at": 2.4, "to": "anchor:tabs.0", "press": "click", "dy": 20 },
+        { "at": 3.8, "to": "anchor:tabs.1", "press": "click", "dy": 20 }
+      ] },
+
+    { "id": "variants", "beats": 8,
+      "hero": { "at": 1, "rect": "frames.0", "fill": "accent@0.16", "stroke": "accent", "sw": 4, "r": 18, "whoosh": "whoosh-b" },
+      "items": [
+        { "kind": "text", "text": "One timeline.\n*Many outputs.*", "at": 0.3, "until": 7.85, "fx": "words", "pos": [0.5, 0.1], "size": 80 },
+        { "kind": "frames", "name": "frames", "at": 1, "step": 0.6, "until": 7.85, "pos": [0.5, 0.45], "h": 360, "wmax": 380, "gap": 40,
+          "items": [ { "label": "9:16", "ar": "9:16", "ghost": true }, { "label": "1:1", "ar": "1:1" }, { "label": "16:9", "ar": "16:9" } ] },
+        { "kind": "text", "text": "3 × 3 × 2 =", "at": 3.4, "until": 7.85, "fx": "words", "pos": [0.5, 0.71], "size": 84 },
+        { "kind": "count", "from": 0, "to": 18, "suffix": " videos", "at": 4.4, "roll": [4.6, 1.4], "until": 7.85, "pos": [0.5, 0.85], "size": 120, "color": "accent" }
+      ],
+      "sfx": [ { "at": 6.0, "sfx": "riser" }, { "at": 6.0, "sfx": "impact-bass-1" } ] }
+  ],
+
+  "ctas": {
+    "A": { "beats": 10, "note": "Instagram follow",
+      "hero": [
+        { "at": 0, "pos": [0.5, 0.66], "w": 560, "h": 150, "fill": "accent", "whoosh": "whoosh" },
+        { "at": 3.3, "pos": [0.5, 0.66], "w": 600, "h": 150, "fill": "panel", "stroke": "accent", "sw": 3 }
+      ],
+      "items": [
+        { "kind": "logo", "at": 0.4, "until": 10, "pos": [0.5, 0.28], "width": 600 },
+        { "kind": "text", "text": "AI tools, *tested.*", "at": 1.0, "until": 10, "fx": "words", "pos": [0.5, 0.47], "size": 84 },
+        { "kind": "text", "text": "Follow", "at": 0.4, "until": 3.2, "fx": "line", "pos": "hero", "size": 58, "color": "accentInk" },
+        { "kind": "text", "text": "Following", "at": 3.4, "until": 10, "fx": "line", "pos": "hero", "size": 58 },
+        { "kind": "text", "text": "@yourhandle", "at": 1.6, "until": 10, "fx": "line", "pos": [0.5, 0.79], "size": 44, "font": "mono", "color": "mute", "weight": 500 }
+      ],
+      "cursor": [ { "at": 2.4, "to": "hero", "press": "click", "dx": 40, "dy": 30 } ] },
+    "B": { "beats": 10, "note": "YouTube subscribe",
+      "hero": [
+        { "at": 0, "pos": [0.5, 0.66], "w": 600, "h": 150, "fill": "accent", "whoosh": "whoosh" },
+        { "at": 3.3, "pos": [0.5, 0.66], "w": 640, "h": 150, "fill": "panel", "stroke": "accent", "sw": 3 }
+      ],
+      "items": [
+        { "kind": "logo", "at": 0.4, "until": 10, "pos": [0.5, 0.28], "width": 600 },
+        { "kind": "text", "text": "AI tools, *tested.*", "at": 1.0, "until": 10, "fx": "words", "pos": [0.5, 0.47], "size": 84 },
+        { "kind": "text", "text": "Subscribe", "at": 0.4, "until": 3.2, "fx": "line", "pos": "hero", "size": 58, "color": "accentInk" },
+        { "kind": "text", "text": "Subscribed", "at": 3.4, "until": 10, "fx": "line", "pos": "hero", "size": 58 },
+        { "kind": "text", "text": "@yourhandle", "at": 1.6, "until": 10, "fx": "line", "pos": [0.5, 0.79], "size": 40, "font": "mono", "color": "mute", "weight": 500 }
+      ],
+      "cursor": [ { "at": 2.4, "to": "hero", "press": "click", "dx": 40, "dy": 30 } ] }
+  }
+}

@@ -26,6 +26,15 @@ You are operating an agent-driven video pipeline. Codex reads this file; Claude 
 | faceless-package | Titles, description, tags, chapters, thumbnail; vidIQ MCP when connected |
 | faceless-review | Independent QA on pixels before every checkpoint |
 | faceless-resume | Continuing a project in a new session |
+| faceless-browser-logins | Any step inside a logged-in website (human signs in; profiles, doctor) |
+| faceless-chatgpt-images | Keyframes/sheets via ChatGPT in a browser (Claude Code) |
+| faceless-flow-video | Paid image-to-video in Google Flow, guarded; dialogue clips |
+| faceless-keyframe-parallax | 2.5D depth-parallax motion from stills |
+| faceless-motion-studio | Code-driven motion graphics campaigns |
+| faceless-longform-from-voice | Long-form from the creator's own recording; re-timing |
+| faceless-media-integrity | Seal/verify media, verified assembly, bit-rot recovery |
+| faceless-premiere-handoff | Editable Premiere project package for a client |
+| faceless-delivery | R2 links, client email, publishing gates |
 
 Edit skills in `skills/` and run `faceless skills sync`; never edit the mirrors directly.
 

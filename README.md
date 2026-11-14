@@ -180,6 +180,15 @@ Verify the narration with local Whisper. Images: my ChatGPT.
 
 → [How it works](docs/02-how-it-works.md) · [Step-by-step workflows](docs/03-workflows.md)
 
+## Automation & learnings
+
+Beyond the core pipeline, this repo carries the **automation and field knowledge** from real productions, de-branded and free of secrets:
+
+- **[`automation/`](automation/README.md)** — a login manager for persistent Playwright profiles (the human signs in once; nothing types credentials), a **ChatGPT image adapter** (resumable, parallel tabs, API-read completion), a guarded **Google Flow video adapter** (spend guards, credit cap, API harvest, native-audio dialogue), a **code-driven Motion Studio**, chunked **guarded renders with verified assembly**, and a **Premiere Pro handoff exporter**.
+- **[`docs/learnings/`](docs/learnings/README.md)** — 12 distilled guides (browser logins, ChatGPT images, Flow, 2.5D parallax, motion studio, long-form from a creator's voice, audio/mix, media integrity on flaky hardware, Premiere handoff, delivery, agent operating rules, universal lessons) plus sanitised field notes.
+- **[`docs/pipelines/`](docs/pipelines/README.md)** — seven end-to-end pipelines mapped stage by stage.
+- Nine more **agent skills** (`faceless-browser-logins`, `-chatgpt-images`, `-flow-video`, `-keyframe-parallax`, `-motion-studio`, `-longform-from-voice`, `-media-integrity`, `-premiere-handoff`, `-delivery`).
+
 ## Repository layout
 
 ```
@@ -191,8 +200,10 @@ faceless/                 Python control plane: state machine, gates, providers,
   schemas/                JSON Schema for every stage artifact
   profiles/               short.json (9:16) and longform.json (16:9)
 composer/                 one Remotion composition (StoryVideo) that renders any project from props
-skills/                   the 9 agent skills (canonical)  →  mirrored to .claude/skills and .agents/skills
-docs/                     documentation (below)
+skills/                   the 18 agent skills (canonical)  →  mirrored to .claude/skills and .agents/skills
+automation/               battle-tested browser + media automation: login manager, ChatGPT image + Google Flow adapters,
+                          motion studio, guarded renders, Premiere handoff exporter, media integrity tools
+docs/                     documentation (below); docs/learnings = field-tested lessons; docs/pipelines = end-to-end maps
 examples/                 filled-in example artifacts
 tests/                    pytest suite (offline, no keys)
 projects/                 your productions (gitignored)
@@ -219,6 +230,8 @@ projects/                 your productions (gitignored)
 | [15. Claude Code browser setup](docs/15-claude-code-browser-setup.md) | ChatGPT image generation via Playwright |
 | [16. Using with Claude Code and Codex](docs/16-agents.md) | what to say, what the agent asks you |
 | [17. Prompting guide](docs/17-prompting-guide.md) | master prompt, every audio/transcription case, checkpoint replies |
+| [18. Learnings](docs/learnings/README.md) | browser logins, ChatGPT images, Flow, parallax, motion studio, long-form, audio, integrity, Premiere, delivery |
+| [19. End-to-end pipelines](docs/pipelines/README.md) | seven proven pipelines, stage by stage |
 
 ## License
 

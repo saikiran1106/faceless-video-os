@@ -26,3 +26,9 @@ composer/public/*
 
 # os
 .DS_Store
+
+# automation: personal account map, local state
+automation/config/accounts.json
+automation/**/node_modules/
+automation/motion_studio/campaigns/*/build/
+automation/motion_studio/campaigns/*/exports/

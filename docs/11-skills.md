@@ -26,6 +26,15 @@ Each `SKILL.md` starts with YAML frontmatter — `name` and a `description` that
 | `faceless-package` | package | vidIQ tool flow, title/description/thumbnail rules |
 | `faceless-review` | before CP1/CP2 | per-stage review checklist on pixels |
 | `faceless-resume` | any | safe continuation in a new session |
+| `faceless-browser-logins` | any browser step | human-only sign-in, persistent profiles, doctor/keepalive, keyring + CDP fixes |
+| `faceless-chatgpt-images` | keyframes | ChatGPT image jobs, parallel tabs, binding by content, guardrails |
+| `faceless-flow-video` | clips | Google Flow guarded generation, harvest, native-audio dialogue |
+| `faceless-keyframe-parallax` | compose | 2.5D depth parallax, move vocabulary, parallax proof |
+| `faceless-motion-studio` | compose | code-driven motion graphics campaigns |
+| `faceless-longform-from-voice` | long-form | creator recording to finished film, re-timing |
+| `faceless-media-integrity` | render/assemble | seals, verified assembly, bit-rot recovery |
+| `faceless-premiere-handoff` | delivery | Premiere project package for a client |
+| `faceless-delivery` | delivery | R2 links, Gmail send, publishing gates |
 
 ## Using them
 

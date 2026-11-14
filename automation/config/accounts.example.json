@@ -1,0 +1,25 @@
+{
+  "_doc": "Copy to accounts.json. NO secrets here: logins live only inside the browser-profile directories (outside any repo). Read by studio_os/accounts.py.",
+  "profiles": {
+    "images": {
+      "account": "you@example.com",
+      "dir": "~/.faceless/browser-profiles/chatgpt-imagegen",
+      "channel": "chromium",
+      "used_for": ["image generation (ChatGPT)", "social posting"],
+      "services": {
+        "chatgpt": {"url": "https://chatgpt.com/", "check": "chatgpt"},
+        "meta_business": {"url": "https://business.facebook.com/latest/home", "check": "meta"},
+        "youtube_studio": {"url": "https://studio.youtube.com/", "check": "youtube"}
+      }
+    },
+    "video": {
+      "account": "you@example.com",
+      "dir": "~/.faceless/browser-profiles/google-flow",
+      "channel": "chrome",
+      "used_for": ["video generation (Google Flow)"],
+      "services": {
+        "google_flow": {"url": "https://flow.google.com/", "check": "flow"}
+      }
+    }
+  }
+}
