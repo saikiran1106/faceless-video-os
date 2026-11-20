@@ -1,0 +1,22 @@
+{
+  "_doc": "Wild-doc style defaults. A project's style.json is deep-merged over this file. See docs/18-wild-doc-style.md.",
+  "name": "wild-doc",
+  "fps": 24,
+  "width": 1920,
+  "height": 1080,
+  "language": "",
+  "channel": {"name": "YOUR CHANNEL", "tagline": "", "cta": "SUBSCRIBE"},
+  "theme": {"red": "#ff3b2f", "ice": "#9fdcff", "gold": "#ffc861", "cream": "#fff6e6", "hot": "#ff6b2c"},
+  "captions": false,
+  "cut": {"max_shot_s": 3.3, "split_to_s": 2.4, "jump_cycle": ["zoom", "cut", "glitch"]},
+  "stress": {"db_over_median": 2.6, "min_len_s": 0.22},
+  "chapters": {
+    "*": {"look": "dusk", "title": "", "music": "", "music_file": "", "bed": null}
+  },
+  "plate_prompt_prefix": "Cinematic natural-history documentary still, photorealistic, 16:9 widescreen, dramatic natural light, shallow depth of field, rich atmosphere. No text, no captions, no letters, no watermark, no logos. Keep the top third uncluttered. Scene: ",
+  "music_base_prompt": "Instrumental only, no vocals, no choir words. Modern cinematic documentary score for a fast-paced YouTube video: steady driving pulse, hybrid orchestral with deep percussion and pulsing synth bass, constant forward momentum, mixed to sit under a narrator (no lead melody in the speech range), loopable, no fade-out at the end. ",
+  "story_sfx": {},
+  "mix": {"music_margin_db": 11.5, "music_min_db": 9.5, "duck_music_db": 6, "duck_sfx_db": 3, "lufs": -14, "true_peak": -1.2, "story_boost_db": 3},
+  "render": {"concurrency": 2, "gl": "swangle", "chunk_s": 60, "crf": 16, "timeout_ms": 180000},
+  "thumbnail": {"bg": "", "lines": [{"text": "YOUR", "color": "#ffffff", "size": 130}, {"text": "TITLE", "color": "#ff7a1a", "size": 260}], "tag": "", "align": "center"}
+}

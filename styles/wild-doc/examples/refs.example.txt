@@ -1,0 +1,2 @@
+# <id> <search tag>#<index on the sheet> | LABEL | sub line | BADGE        (or: <id> local:<file in 06-assets/ref> | ...)
+lion_skull lion#0 | LION SKULL | Panthera leo · museum specimen | REAL SPECIMEN

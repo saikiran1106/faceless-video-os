@@ -35,6 +35,8 @@ Each `SKILL.md` starts with YAML frontmatter — `name` and a `description` that
 | `faceless-media-integrity` | render/assemble | seals, verified assembly, bit-rot recovery |
 | `faceless-premiere-handoff` | delivery | Premiere project package for a client |
 | `faceless-delivery` | delivery | R2 links, Gmail send, publishing gates |
+| `faceless-wild-doc` | all (own pipeline) | script + audio → wildlife documentary: shot-list grammar, graphics catalogue, 7-iteration lessons |
+| `faceless-media-logins` | any generation | `faceless login images/flow/status`, `faceless gen images/clips`, multi-account Flow |
 
 ## Using them
 

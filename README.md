@@ -34,6 +34,44 @@ Then open the folder in **Claude Code** or **Codex** and say:
 
 More ready-made prompts: [Prompting guide](#prompting-guide--how-to-ask-for-a-video) below.
 
+## Connect your image & video generators — one command each
+
+You sign in yourself in a normal browser window; nothing ever types your password. → [Full guide](docs/19-media-logins.md)
+
+```bash
+faceless login images              # asks: 1) ChatGPT in the browser  2) Codex CLI
+faceless login images --via browser   # opens chatgpt.com; already signed in? detected and closed for you
+faceless login images --via codex     # installs the Codex CLI if missing, then `codex login` if signed out
+faceless login flow --accounts 3   # opens 3 windows (flow-1..3): one Google account + Flow project each
+faceless login status              # what is connected
+```
+
+Then generate with whatever is connected:
+
+```bash
+faceless gen images --jobs jobs.json --out ./frames            # [{"id","prompt","aspect"}] -> ./frames/<id>.png
+faceless gen clips --project ./flow-proj --credit-cap 120 --dry-run   # Flow clips split across your accounts (paid)
+```
+
+## Wild-doc — give a script + audio, get the whole documentary
+
+A ready-made style for wildlife, nature and prehistoric documentaries, built from **7 iterations of a real client film**:
+graded real footage, AI stills in 2.5D depth parallax, real-photo evidence cards, English motion graphics, a new
+picture every 1–3 s, a sound on every cut, story sounds on the words, music under the voice. → [Full guide](docs/18-wild-doc-style.md)
+
+```bash
+faceless wild-doc new wolves --script script.txt --audio voice.wav --lang hi --channel "WILD PLANET"
+faceless wild-doc run wolves          # voice -> transcript -> script alignment -> draft shot list (stops to direct)
+faceless wild-doc run wolves --yes    # images, sounds, plan, render, mix, verified master, QA, YouTube package
+faceless wild-doc run wolves --auto   # no directing: render the drafted cut straight away
+```
+
+Or tell your agent: *"Here's the client's script `~/client/script.txt` and voice `~/client/voice.wav`. Make the full
+wild-doc video, channel THE WILD ERA, images with my Codex, local transcription."* — it follows
+[`skills/faceless-wild-doc`](skills/faceless-wild-doc/SKILL.md): searches footage and evidence, looks at every contact
+sheet, writes the shot list, generates the plates, renders, QAs and hands you the master to approve.
+The client re-edited the voice? `faceless wild-doc voice wolves new.wav` re-times the whole film.
+
 ## Prompting guide — how to ask for a video
 
 You don't run the commands yourself; you tell your agent what you want. Whatever you **name** (voice, transcriber, image source, budget…) is binding; whatever you leave out is chosen for you and announced before any money is spent. The agent stops for you only at **CP1** (approve the story), **CP2** (approve the final cut), and before each paid call.
@@ -185,9 +223,10 @@ Verify the narration with local Whisper. Images: my ChatGPT.
 Beyond the core pipeline, this repo carries the **automation and field knowledge** from real productions, de-branded and free of secrets:
 
 - **[`automation/`](automation/README.md)** — a login manager for persistent Playwright profiles (the human signs in once; nothing types credentials), a **ChatGPT image adapter** (resumable, parallel tabs, API-read completion), a guarded **Google Flow video adapter** (spend guards, credit cap, API harvest, native-audio dialogue), a **code-driven Motion Studio**, chunked **guarded renders with verified assembly**, and a **Premiere Pro handoff exporter**.
-- **[`docs/learnings/`](docs/learnings/README.md)** — 12 distilled guides (browser logins, ChatGPT images, Flow, 2.5D parallax, motion studio, long-form from a creator's voice, audio/mix, media integrity on flaky hardware, Premiere handoff, delivery, agent operating rules, universal lessons) plus sanitised field notes.
-- **[`docs/pipelines/`](docs/pipelines/README.md)** — seven end-to-end pipelines mapped stage by stage.
+- **[`docs/learnings/`](docs/learnings/README.md)** — 13 distilled guides (browser logins, ChatGPT images, Flow, 2.5D parallax, motion studio, long-form from a creator's voice, audio/mix, media integrity on flaky hardware, Premiere handoff, delivery, agent operating rules, universal lessons) plus sanitised field notes.
+- **[`docs/pipelines/`](docs/pipelines/README.md)** — eight end-to-end pipelines mapped stage by stage.
 - Nine more **agent skills** (`faceless-browser-logins`, `-chatgpt-images`, `-flow-video`, `-keyframe-parallax`, `-motion-studio`, `-longform-from-voice`, `-media-integrity`, `-premiere-handoff`, `-delivery`).
+- **`faceless-wild-doc`** (script + audio → finished documentary) and **`faceless-media-logins`** (one-command ChatGPT / Codex / multi-account Flow logins + `faceless gen`).
 
 ## Repository layout
 
@@ -195,12 +234,15 @@ Beyond the core pipeline, this repo carries the **automation and field knowledge
 install.sh / install.ps1  one-command installers (macOS/Linux, Windows)
 AGENTS.md / CLAUDE.md     the agent contract (Codex / Claude Code entry points)
 faceless/                 Python control plane: state machine, gates, providers, compose, CLI
+  wilddoc/                script + audio -> documentary pipeline (align, shot list, plan, assets, sound, render, QA)
+  logins.py / gen.py      `faceless login` (ChatGPT browser, Codex CLI, Flow accounts) and `faceless gen`
   providers/              TTS, transcription and image-API adapters
   browser/                ChatGPT image adapter (Playwright) for the Claude Code host
   schemas/                JSON Schema for every stage artifact
   profiles/               short.json (9:16) and longform.json (16:9)
 composer/                 one Remotion composition (StoryVideo) that renders any project from props
-skills/                   the 18 agent skills (canonical)  →  mirrored to .claude/skills and .agents/skills
+styles/wild-doc/          the wild-doc film style: style.json defaults + Remotion compositions (Film, Thumb)
+skills/                   the 20 agent skills (canonical)  →  mirrored to .claude/skills and .agents/skills
 automation/               battle-tested browser + media automation: login manager, ChatGPT image + Google Flow adapters,
                           motion studio, guarded renders, Premiere handoff exporter, media integrity tools
 docs/                     documentation (below); docs/learnings = field-tested lessons; docs/pipelines = end-to-end maps
@@ -230,8 +272,10 @@ projects/                 your productions (gitignored)
 | [15. Claude Code browser setup](docs/15-claude-code-browser-setup.md) | ChatGPT image generation via Playwright |
 | [16. Using with Claude Code and Codex](docs/16-agents.md) | what to say, what the agent asks you |
 | [17. Prompting guide](docs/17-prompting-guide.md) | master prompt, every audio/transcription case, checkpoint replies |
-| [18. Learnings](docs/learnings/README.md) | browser logins, ChatGPT images, Flow, parallax, motion studio, long-form, audio, integrity, Premiere, delivery |
-| [19. End-to-end pipelines](docs/pipelines/README.md) | seven proven pipelines, stage by stage |
+| [18. Wild-doc style](docs/18-wild-doc-style.md) | script + audio → finished wildlife documentary, every step and setting |
+| [19. Media logins](docs/19-media-logins.md) | ChatGPT browser / Codex CLI images, multi-account Google Flow, `faceless gen` |
+| [20. Learnings](docs/learnings/README.md) | browser logins, ChatGPT images, Flow, parallax, motion studio, long-form, audio, integrity, Premiere, delivery |
+| [21. End-to-end pipelines](docs/pipelines/README.md) | eight proven pipelines, stage by stage |
 
 ## License
 

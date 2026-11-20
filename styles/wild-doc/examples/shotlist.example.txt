@@ -1,0 +1,25 @@
+# wild-doc shot list for script.example.txt (line ids from 01-audio/lines.txt)
+L1: S:savanna_sunset_aerial@2 ; alone=P:P01:dolly +t=whip +fx=dust
+L2: S:tall_grass_wind@1 +t=whip
+L3: S:sun_behind_acacia@2 +t=cut
+L4: P:P02:push +fx=dust ; weapon,=P:P01:push +t=zoom ; eleven=S:night_horizon@4 +t=glitch
+L5: S:moon_clouds@6 ; lions,=P:P10:crash +t=punch ; hyenas,=P:P18:crash +t=glitch ; leopard=P:P26:crash +t=punch ; hippo=P:P34:crash +t=glitch
+L6: S:grass_night_wind@1 +t=whip ; none=R:lion_skull +t=glitch +nolabel
+L7: S:sunrise_savanna@8 +t=leak ; morning?=M:title +t=glitch
+L8: S:heat_haze_plain@3 +t=dip ; heat=S:cracked_earth@6 +t=flash
+
+O L1 alone kw 1.2 {"text":"ALONE","tone":"gold","pos":"c"}
+O L4 phone, kw 1.0 {"text":"NO PHONE","tone":"red","pos":"l"}
+O L4 torch, kw 1.0 {"text":"NO TORCH","tone":"red","pos":"c"}
+O L4 weapon, kw 1.1 {"text":"NO WEAPON","tone":"red","pos":"r"}
+O L4 eleven clock 2.2 {"n": "11", "label": "HOURS UNTIL DAWN"}
+O L5 lions, threat 1.1 {"n":1,"name":"LIONS","sci":"Panthera leo"}
+O L5 hyenas, threat 1.1 {"n":2,"name":"SPOTTED HYENA","sci":"Crocuta crocuta"}
+O L5 leopard threat 1.1 {"n":3,"name":"LEOPARD","sci":"Panthera pardus"}
+O L5 hippo threat 1.6 {"n":4,"name":"HIPPO","sci":"Hippopotamus amphibius"}
+O L6 first kw 1.6 {"text":"THE FIRST THREAT?","tone":"white","pos":"c"}
+O L8 ^ time 2.6 {"t":"6:00 PM","sub":"SUNSET · THE HEAT"}
+O L8 heat thermo 2.4 {"from": 34, "to": 22}
+
+X L5 lions, lion_roar -8
+X L5 hyenas, hyena_whoop -12

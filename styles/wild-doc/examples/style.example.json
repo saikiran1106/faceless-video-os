@@ -1,0 +1,19 @@
+{
+  "language": "en",
+  "channel": {"name": "WILD PLANET", "tagline": "LOST STORIES OF THE WILD", "cta": "SUBSCRIBE"},
+  "chapters": {
+    "*": {"look": "dusk"},
+    "the-challenge": {"look": "dusk", "title": "The challenge", "bed": ["savanna_night_bed", -24],
+                      "music": "Mysterious and urgent: ticking clock-like pulse, low strings ostinato, deep booms, rising tension, 110 BPM."},
+    "the-heat": {"look": "desert", "title": "The heat", "bed": ["savanna_night_bed", -22],
+                 "music": "Dry and tense: hand drums, plucked low strings, warm drones, steady heartbeat pulse, 100 BPM."}
+  },
+  "story_sfx": {
+    "savanna_night_bed": ["Savanna at dusk: crickets, distant birds, warm wind through tall dry grass, constant", 22],
+    "lion_roar": ["A huge lion roar, powerful, echoing across an open plain at night", 6],
+    "hyena_whoop": ["Spotted hyenas whooping and giggling in the dark at night", 10]
+  },
+  "thumbnail": {"bg": "plates/P01.jpg", "lines": [{"text": "SAVANNA", "color": "#ffffff", "size": 130},
+                {"text": "1 NIGHT", "color": "#ff7a1a", "size": 260}, {"text": "SURVIVE?", "color": "#ffe2a8", "size": 130}],
+                "tag": "NO WEAPON"}
+}

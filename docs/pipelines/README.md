@@ -10,6 +10,7 @@ Seven proven pipelines. Each lists stages, the tools that run them, the gates, a
 | D | [Live-action dialogue film](#d-live-action-dialogue-film-flow-native-audio) | researched screenplay → speaking-actors reel/film | ChatGPT sheets → Flow Ingredients + native voices |
 | E | [Long-form from the creator's recording](#e-long-form-from-the-creators-recording) | raw VO → 8–20 min film | Scribe, Remotion, `video_tools`, mix |
 | F | [Motion-graphics campaign](#f-motion-graphics-campaign-motion-studio) | brief + sources → N variants, QA'd | `automation/motion_studio` |
+| H | [Wild-doc from script + audio](#h-wild-doc-from-script--audio) | client script + narration → finished 16:9 documentary | `faceless wild-doc`, `faceless login/gen`, Remotion style `styles/wild-doc` |
 | G | [Editor handoff](#g-editor-handoff-premiere-project) | finished film → Premiere project zip + links | `video_tools/premiere_export.py`, R2, mail |
 
 ## A. Topic → Short/Reel
@@ -37,3 +38,11 @@ isolate → word timings → EDL (last take) → cut (pauses only) → shot list
 
 ## G. Editor handoff (Premiere project)
 final picture + stems → `premiere_export.py` (xmeml + EDL + CSV) → package library + README → zip (stored, zip64) → CRC + decode checks → R2 upload + sha → presigned forced-download links → mail the client with honest limits. Details: [learnings 9](../learnings/09-premiere-and-editor-handoff.md), [10](../learnings/10-delivery-and-publishing.md).
+
+## H. Wild-doc from script + audio
+`faceless wild-doc new <slug> --script S --audio A` → `run` (voice as delivered → transcript → script/audio alignment →
+plates-only draft) → direct `shotlist.txt` (stock by contact sheet, AI plates via `faceless gen images`, Commons evidence,
+English graphics, story SFX) → `run --yes` (depth maps, SFX kit, story sounds + chapter music, plan with auto jump-cuts,
+baked stock grades, verified chunk renders, sidechain mix at −14 LUFS, verified master, thumbnail, QA, YouTube package).
+A re-edited voice: `faceless wild-doc voice <slug> new.wav` re-times everything. Full guide: [doc 18](../18-wild-doc-style.md).
+

@@ -24,6 +24,10 @@ composer/out/
 composer/public/*
 !composer/public/.gitkeep
 
+# wild-doc style
+styles/*/remotion/node_modules
+styles/*/remotion/out/
+
 # os
 .DS_Store
 

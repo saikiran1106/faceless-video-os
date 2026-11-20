@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import time
 from datetime import datetime
 from pathlib import Path
@@ -35,7 +36,8 @@ def _submit_one(gen: FlowGenerator, page, beat: dict, dry_run: bool) -> dict:
         page.get_by_role("button", name="Image ingredient").first.click()
         page.wait_for_timeout(600)
     chip = page.get_by_role("button", name="Settings trigger").inner_text()
-    if not all(k in chip for k in ("Video", "720p", "9_16", "x1")):
+    aspect = os.environ.get("FACELESS_FLOW_ASPECT", "9_16")   # 16_9 for landscape films (set the composer to match first)
+    if not all(k in chip for k in ("Video", "720p", aspect, "x1")):
         gen._stop(page, bid, f"settings chip unexpected: {chip!r}")
     gen._attach(page, "Start", sb / f"{bid}.png", bid)
     if end_id:

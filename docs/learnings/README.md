@@ -17,4 +17,5 @@ Written to be reusable: no accounts, no channels, no secrets. Code that implemen
 | 10 | [Delivery and publishing](10-delivery-and-publishing.md) | R2 links, Gmail send, publishing rules |
 | 11 | [Agent operating rules](11-agent-operating-rules.md) | money, scope, honesty, process, environment, learning loop |
 | 12 | [Universal lessons digest](12-universal-lessons-digest.md) | hook/story/visual/packaging/gate lessons |
+| 13 | [Wild-doc: seven client iterations](13-wild-doc-seven-iterations.md) | how one documentary's client notes became a reusable style |
 | – | [field-notes/](field-notes/) | raw, sanitised lesson notes behind the docs above |

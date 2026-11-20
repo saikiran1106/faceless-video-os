@@ -65,3 +65,31 @@ All commands print JSON. `<p>` = project slug (under `projects/`) or a path. Exi
 | `faceless compose render <p> [--platform youtube\|instagram\|tiktok] [--engine remotion\|ffmpeg] [--keep-props]` | render MP4 |
 | `faceless compose report <p> [--reviewed] [--notes]` | probe renders → `render_report.json` |
 | `faceless package draft <p> [--force]` | package skeleton, chapters, SRT |
+
+## Media logins and generation ([doc 19](19-media-logins.md))
+
+| Command | Does |
+|---|---|
+| `faceless login images [--via browser\|codex] [--accounts N]` | connect image generation: ChatGPT window(s), or install + sign in the Codex CLI |
+| `faceless login flow [--accounts N] [--only NAME] [--project-url NAME URL]` | one window per Google account; saves each Flow project URL |
+| `faceless login status [--live]` | what is connected |
+| `faceless gen images --jobs J --out DIR [--via codex\|browser\|api] [--workers N] [--only IDS] [--yes]` | one image per job → `DIR/<id>.png` |
+| `faceless gen clips --project DIR --credit-cap N [--accounts ...] [--beats ...] [--dry-run] [--copy-to DIR]` | Flow clips split across accounts (PAID) |
+
+## Wild-doc ([doc 18](18-wild-doc-style.md))
+
+| Command | Does |
+|---|---|
+| `faceless wild-doc new SLUG --script S --audio A [--lang L] [--channel NAME] [--title T]` | start a project |
+| `faceless wild-doc run P [--yes] [--auto] [--images-via V] [--provider X] [--preview]` | every ready step in order; stops with the next action |
+| `faceless wild-doc setup [--depth] [--kit procedural\|elevenlabs] [--yes]` | Remotion packages, depth model, SFX kit |
+| `faceless wild-doc transcribe P [--provider ...] [--yes]` · `align P [--no-split]` · `draft P [--force]` | clock + first cut |
+| `faceless wild-doc status P` | what exists, what the shot list needs |
+| `faceless wild-doc stock-search P "q" ...` · `stock-fetch P` | Pixabay footage by contact sheet; `06-assets/clips` |
+| `faceless wild-doc refs-search P TAG "q" ...` · `refs-fetch P` | Commons evidence photos + credits |
+| `faceless wild-doc images P [--via V] [--only IDS]` · `plates P` | AI plates + depth maps |
+| `faceless wild-doc kit [--via procedural\|elevenlabs]` · `sound P --yes` | SFX kit; story SFX + chapter music |
+| `faceless wild-doc plan P [--allow-missing]` · `grade P` · `render P [--chunks N ...]` | plan, baked grades, verified chunks |
+| `faceless wild-doc mix P` · `assemble P` · `thumbnail P` · `qa P [--transcribe X]` · `package P` | finish |
+| `faceless wild-doc voice P NEW_AUDIO` | replace the narration and re-time the film |
+

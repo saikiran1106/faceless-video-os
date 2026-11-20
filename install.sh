@@ -301,6 +301,16 @@ fi
 if npx --no-install tsc --noEmit; then ok "Composer type-checks"; else warn "Composer type-check failed"; fi
 popd >/dev/null
 
+step "Wild-doc style (script + audio -> documentary)"
+pushd "$ROOT/styles/wild-doc/remotion" >/dev/null
+if npm install --no-audit --no-fund --loglevel=error; then ok "Wild-doc Remotion packages installed"; else warn "Wild-doc packages failed; run: faceless wild-doc setup"; fi
+popd >/dev/null
+if "$VPY" -m pip install --quiet -e ".[wild-doc]"; then
+  ok "Depth model runtime installed (download the model once: faceless wild-doc setup --depth)"
+else
+  warn "onnxruntime failed to install; wild-doc plates will use a pseudo depth map"
+fi
+
 # ------------------------------------------------------------- 5. configure --
 step "Configuration and skills"
 "$VENV/bin/faceless" setup >/dev/null

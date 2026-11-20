@@ -31,6 +31,15 @@ Start with `faceless doctor` and `faceless next <p>` — most answers are in the
 | Approval refused: artifact changed | edited after its gate passed | `faceless complete <p> <stage>` again, then approve |
 | Captions out of sync | beats/props built from an old transcript | re-transcribe, `beats build --keep-directions`, re-render |
 | Render shorter than narration (FF-RENDER-004) | stale props | render without `--keep-props` |
+| wild-doc: `anchor 'x' not found in L12` | the anchor isn't a word of that script line | use the script's spelling (see `01-audio/lines.txt`); punctuation is ignored |
+| wild-doc: `Assets missing for the plan` | shot list names stock/plates/refs that don't exist yet | `faceless wild-doc status P`; make them, or preview with `plan --allow-missing` |
+| wild-doc: `match_ratio` below 0.6 | wrong script, wrong language code, or a very different recording | check the files; `transcribe --provider ... --lang` |
+| wild-doc chunk: `fonts.gstatic.com ... ERR_SSL_PROTOCOL_ERROR` | transient network error loading Google Fonts | the render retries a chunk 3x; if it persists check the network |
+| wild-doc chunk: `404 ... public/...mp4` | a file in `08-compose/public` symlinks outside it | `render` now copies such links in; re-run `render` |
+| wild-doc: `too_dark` segments after `grade` | a dark clip under the night grade goes black | pick a brighter clip or `+look=dusk` on that shot |
+| `gen images --via codex`: `no image produced` | Codex answered in text or the image tool is off | `faceless login status` (image_generation true?); re-run with `--only ID` |
+| `login flow`: Google says the browser is not secure | bundled Chromium | install Google Chrome, or `FACELESS_CHROME_PATH=/path/to/chrome` |
+| `login`: `No display for a browser window` | SSH/remote shell | set `DISPLAY` (and `XAUTHORITY`) to your desktop session |
 
 ## Getting help from the agent
 

@@ -113,6 +113,14 @@ npx --no-install remotion browser ensure | Out-Null
 if ($LASTEXITCODE -eq 0) { Ok "Remotion headless browser ready" } else { Warn "Remotion browser will download on first render" }
 Pop-Location
 
+Step "Wild-doc style (script + audio -> documentary)"
+Push-Location (Join-Path $Root "styles\wild-doc\remotion")
+npm install --no-audit --no-fund --loglevel=error
+if ($LASTEXITCODE -eq 0) { Ok "Wild-doc Remotion packages installed" } else { Warn "Wild-doc packages failed; run: faceless wild-doc setup" }
+Pop-Location
+& $VPy -m pip install --quiet -e ".[wild-doc]"
+if ($LASTEXITCODE -eq 0) { Ok "Depth runtime installed (model: faceless wild-doc setup --depth)" } else { Warn "onnxruntime failed; plates use a pseudo depth map" }
+
 Step "Configuration and skills"
 $Faceless = Join-Path $Venv "Scripts\faceless.exe"
 & $Faceless setup | Out-Null

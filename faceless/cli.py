@@ -201,8 +201,13 @@ def build_parser() -> argparse.ArgumentParser:
     sk.add_parser("sync", help="copy skills/ into .claude/skills and .agents/skills")
 
     from .browser import cli as browser_cli
+    from . import gen, logins
+    from .wilddoc import cli as wilddoc_cli
 
     browser_cli.add_parser(sub)
+    logins.add_parser(sub)
+    gen.add_parser(sub)
+    wilddoc_cli.add_parser(sub)
     return p
 
 
@@ -250,6 +255,18 @@ def dispatch(args) -> int:  # noqa: C901 - a flat command table reads best here
         engine = ProductionEngine.initialize(root, args.slug, args.title, args.format, args.voice, args.host, args.language, args.budget_usd)
         _print({"project": str(engine.project_root), **engine.next_action()})
         return 0
+    if cmd == "login":
+        from . import logins
+
+        return logins.handle(args)
+    if cmd == "gen":
+        from . import gen
+
+        return gen.handle(args)
+    if cmd == "wild-doc":
+        from .wilddoc import cli as wilddoc_cli
+
+        return wilddoc_cli.handle(args)
     if cmd == "browser":
         from .browser import cli as browser_cli
 

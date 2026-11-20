@@ -19,5 +19,7 @@
 | 15 | [Claude Code browser setup](15-claude-code-browser-setup.md) | Generating images with ChatGPT from Claude Code |
 | 16 | [Using with Claude Code and Codex](16-agents.md) | What to say to the agent and what it will ask you |
 | 17 | [Prompting guide](17-prompting-guide.md) | Copy-paste prompts: own audio (local Whisper / Scribe / OpenAI), fully AI, checkpoints |
-| 18 | [Learnings](learnings/README.md) | Everything learned automating browsers, ChatGPT images, Google Flow, motion studios, long-form, integrity, Premiere handoff |
-| 19 | [End-to-end pipelines](pipelines/README.md) | Seven proven pipelines mapped stage by stage |
+| 18 | [Wild-doc style](18-wild-doc-style.md) | A client gives a script + narration audio and wants the whole wildlife/nature documentary |
+| 19 | [Media logins](19-media-logins.md) | Connecting ChatGPT (browser), the Codex CLI or several Google Flow accounts; `faceless gen` |
+| 20 | [Learnings](learnings/README.md) | Everything learned automating browsers, ChatGPT images, Google Flow, motion studios, long-form, integrity, Premiere handoff |
+| 21 | [End-to-end pipelines](pipelines/README.md) | Eight proven pipelines mapped stage by stage |

@@ -9,7 +9,11 @@ You are operating an agent-driven video pipeline. Codex reads this file; Claude 
 2. If the user names an existing video or says continue/resume → read `skills/faceless-resume/SKILL.md`.
 3. If the user wants a new video, short, reel, or has a voiceover to turn into a video →
    read `skills/faceless-produce/SKILL.md` and follow it. It routes every stage to its skill.
-4. Vague request ("what can you do?") → run `faceless doctor`, explain the capabilities in plain
+4. Client gives a **script + narration audio** for a wildlife / nature / prehistoric documentary ("full video",
+   "wild animals style") → read `skills/faceless-wild-doc/SKILL.md` (`faceless wild-doc`).
+5. Connecting image/video generators (ChatGPT browser, Codex CLI, Google Flow accounts) →
+   `skills/faceless-media-logins/SKILL.md` (`faceless login`, `faceless gen`).
+6. Vague request ("what can you do?") → run `faceless doctor`, explain the capabilities in plain
    words, and offer: (a) AI-voiced Short from a topic, (b) video from their own recording,
    (c) `faceless demo` to see the pipeline work with no keys.
 
@@ -35,6 +39,8 @@ You are operating an agent-driven video pipeline. Codex reads this file; Claude 
 | faceless-media-integrity | Seal/verify media, verified assembly, bit-rot recovery |
 | faceless-premiere-handoff | Editable Premiere project package for a client |
 | faceless-delivery | R2 links, client email, publishing gates |
+| faceless-wild-doc | Script + audio → finished fast-cut wildlife documentary (7-iteration client style) |
+| faceless-media-logins | One-command logins: ChatGPT browser / Codex CLI images, N Google Flow accounts; `faceless gen` |
 
 Edit skills in `skills/` and run `faceless skills sync`; never edit the mirrors directly.
 
@@ -58,3 +64,4 @@ Edit skills in `skills/` and run `faceless skills sync`; never edit the mirrors 
   (`.../host-claude-code.md`).
 - **Any agent with OPENAI_API_KEY**: `faceless images generate` (`.../host-api.md`).
 - **Otherwise**: `faceless images prompts` for a human (`.../host-manual.md`).
+- **Any host, after `faceless login images`**: `faceless gen images --jobs J --out DIR` (Codex CLI or ChatGPT browser).
